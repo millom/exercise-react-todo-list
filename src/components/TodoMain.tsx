@@ -12,6 +12,8 @@ export function TodoMain(): ReactElement {
     const todoItem: ITodoItem = {
       id: id,
       text: textAreaRef.current!.value,
+      done: false,
+      // ref: useRef(null),
     };
     todoArray.push(todoItem);
     setTodoArray(todoArray);
@@ -20,9 +22,21 @@ export function TodoMain(): ReactElement {
     console.log(todoArray);
   };
 
+  const removeTodoFunc = () => {
+    // console.log("Old", todoArray, todoArray[0].done === true);
+    const newTodoArray = todoArray.filter((item) => !item.done);
+    // console.log("New", newTodoArray);
+
+    setTodoArray(newTodoArray);
+  };
+
   return (
     <div className="todo-main-container">
-      <TodoMainMenu addTodo={addTotdoFunc} textareaRef={textAreaRef} />
+      <TodoMainMenu
+        addTodo={addTotdoFunc}
+        removeTodo={removeTodoFunc}
+        textareaRef={textAreaRef}
+      />
       <TodoList todoArray={todoArray}></TodoList>
     </div>
   );

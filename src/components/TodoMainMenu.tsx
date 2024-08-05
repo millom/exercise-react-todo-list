@@ -3,11 +3,13 @@ import { addRemoveFunc } from "../customTypes";
 
 interface ITodoMainMenuProps {
   addTodo: addRemoveFunc;
+  removeTodo: addRemoveFunc;
   textareaRef: RefObject<HTMLTextAreaElement>;
 }
 
 export function TodoMainMenu({
   addTodo,
+  removeTodo,
   textareaRef,
 }: ITodoMainMenuProps): ReactElement {
   return (
@@ -20,7 +22,9 @@ export function TodoMainMenu({
             </button>
             <textarea className="textarea" ref={textareaRef}></textarea>
           </div>
-          <button className="btn">Rmove</button>
+          <button className="btn" onClick={removeTodo}>
+            Rmove
+          </button>
         </div>
       </div>
     </>
