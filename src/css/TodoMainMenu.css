@@ -1,0 +1,29 @@
+.main-menu {
+  display: flex;
+  justify-content: space-around;
+}
+
+.btn {
+  height: 3rem;
+  width: 7rem;
+  background-color: khaki;
+  color: chocolate;
+  font-weight: bold;
+  border-radius: 1rem;
+  border: 0.2rem solid yellowgreen;
+  box-shadow: 0.2rem 0.2rem rgba(50, 50, 50, 0.3);
+}
+
+.add-container {
+  display: flex;
+  justify-content: left;
+  align-content: center;
+  gap: 1rem;
+}
+
+.textarea {
+  width: 54rem;
+  height: 3rem;
+  font-size: large;
+  line-height: 1.5;
+}
