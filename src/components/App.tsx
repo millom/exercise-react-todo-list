@@ -1,7 +1,9 @@
+import { TodoMain } from ".";
+
 export function App() {
   return (
     <>
-      <h1>This is the App component</h1>
+      <TodoMain />
     </>
   );
 }
