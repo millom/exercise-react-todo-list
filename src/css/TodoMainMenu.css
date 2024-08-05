@@ -22,8 +22,12 @@
 }
 
 .textarea {
-  width: 54rem;
-  height: 3rem;
+  width: 50rem;
+  height: 3.3rem;
   font-size: large;
   line-height: 1.5;
+  border-radius: 1rem;
+  border: 0.2rem solid yellowgreen;
+  box-shadow: 0.2rem 0.2rem rgba(50, 50, 50, 0.3);
+  padding-inline: 0.5rem;
 }
