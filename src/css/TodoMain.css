@@ -1,0 +1,11 @@
+.todo-main-container {
+  border-radius: 1rem;
+  border: 0.2rem solid yellowgreen;
+  box-shadow: 0.2rem 0.2rem rgba(50, 50, 50, 0.3);
+  padding: 1rem;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  gap: 3rem;
+}

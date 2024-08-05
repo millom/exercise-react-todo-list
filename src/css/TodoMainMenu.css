@@ -1,6 +1,13 @@
-.main-menu {
+.main-menu-container {
   display: flex;
   justify-content: space-around;
+  padding-top: 3rem;
+}
+
+.main-menu-layout {
+  display: flex;
+  justify-content: space-around;
+  width: 80%;
 }
 
 .btn {
@@ -22,7 +29,7 @@
 }
 
 .textarea {
-  width: 50rem;
+  width: 35rem;
   height: 3.3rem;
   font-size: large;
   line-height: 1.5;

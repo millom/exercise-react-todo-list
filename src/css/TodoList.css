@@ -1,0 +1,20 @@
+.todo-list-container {
+  height: 35rem;
+  display: flex;
+  justify-content: center;
+}
+
+.todo-list {
+  width: 80%;
+  border-radius: 1rem;
+  border: 0.2rem solid yellowgreen;
+  box-shadow: 0.2rem 0.2rem rgba(50, 50, 50, 0.3);
+  padding-inline: 2rem;
+  padding-block: 2rem;
+
+  display: flex;
+  justify-content: start;
+  align-content: center;
+  flex-direction: column;
+  gap: 1rem;
+}

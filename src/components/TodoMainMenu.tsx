@@ -12,15 +12,16 @@ export function TodoMainMenu({
 }: ITodoMainMenuProps): ReactElement {
   return (
     <>
-      <h1>Main menu</h1>
-      <div className="main-menu">
-        <div className="add-container">
-          <button className="btn" onClick={addTodo}>
-            Add
-          </button>
-          <textarea className="textarea" ref={textareaRef}></textarea>
+      <div className="main-menu-container">
+        <div className="main-menu-layout">
+          <div className="add-container">
+            <button className="btn" onClick={addTodo}>
+              Add
+            </button>
+            <textarea className="textarea" ref={textareaRef}></textarea>
+          </div>
+          <button className="btn">Rmove</button>
         </div>
-        <button className="btn">Rmove</button>
       </div>
     </>
   );

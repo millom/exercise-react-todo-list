@@ -21,10 +21,9 @@ export function TodoMain(): ReactElement {
   };
 
   return (
-    <>
-      <h1>Help I need somebody</h1>
+    <div className="todo-main-container">
       <TodoMainMenu addTodo={addTotdoFunc} textareaRef={textAreaRef} />
       <TodoList todoArray={todoArray}></TodoList>
-    </>
+    </div>
   );
 }

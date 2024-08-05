@@ -8,10 +8,12 @@ interface ITodoListProps {
 
 export function TodoList({ todoArray }: ITodoListProps): ReactElement {
   return (
-    <div>
-      {todoArray.map((todo) => (
-        <TodoItem key={todo.id} todoItem={todo} />
-      ))}
+    <div className="todo-list-container">
+      <div className="todo-list">
+        {todoArray.map((todo) => (
+          <TodoItem key={todo.id} todoItem={todo} />
+        ))}
+      </div>
     </div>
   );
 }
