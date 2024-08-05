@@ -7,11 +7,13 @@
   justify-content: center;
   align-content: center;
   flex-direction: row;
+  padding: 0.5rem;
   gap: 1rem;
 }
 
 .readonly-textarea {
-  width: 54rem;
+  width: 50rem;
+  height: 2.5rem;
   border: none;
   /* selc */
 }
@@ -33,4 +35,15 @@
 .checkbox {
   height: 1.2rem;
   width: 1.2rem;
+}
+
+.sm-btn {
+  height: 2rem;
+  width: 5rem;
+  background-color: khaki;
+  color: chocolate;
+  font-weight: bold;
+  border-radius: 0.5rem;
+  border: 0.2rem solid yellowgreen;
+  box-shadow: 0.2rem 0.2rem rgba(50, 50, 50, 0.3);
 }

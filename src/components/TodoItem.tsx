@@ -1,11 +1,16 @@
 import { ReactElement } from "react";
 import { ITodoItem } from "../interfaces";
+import { addRemoveFunc, removeByIdFunc } from "../customTypes";
 
 interface ITodoItemProps {
   todoItem: ITodoItem;
+  RemoveItem: removeByIdFunc;
 }
 
-export function TodoItem({ todoItem }: ITodoItemProps): ReactElement {
+export function TodoItem({
+  todoItem,
+  RemoveItem,
+}: ITodoItemProps): ReactElement {
   return (
     <div className="todo-item-container">
       <input
@@ -24,6 +29,9 @@ export function TodoItem({ todoItem }: ITodoItemProps): ReactElement {
       >
         {/* {todoItem.text} */}
       </textarea>
+      <button className="sm-btn" onClick={() => RemoveItem(todoItem.id)}>
+        Remove
+      </button>
     </div>
   );
   // ref={todoItem.ref}

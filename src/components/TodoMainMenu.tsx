@@ -23,7 +23,7 @@ export function TodoMainMenu({
             <textarea className="textarea" ref={textareaRef}></textarea>
           </div>
           <button className="btn" onClick={removeTodo}>
-            Rmove
+            Remove (done)
           </button>
         </div>
       </div>
