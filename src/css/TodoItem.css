@@ -1,0 +1,36 @@
+.todo-item-container {
+  border-radius: 1rem;
+  border: 0.2rem solid yellowgreen;
+  box-shadow: 0.2rem 0.2rem rgba(50, 50, 50, 0.3);
+
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-direction: row;
+  gap: 1rem;
+}
+
+.readonly-textarea {
+  width: 54rem;
+  border: none;
+  /* selc */
+}
+
+.readonly-textarea::focus {
+  border: none;
+  /* selc */
+}
+
+.not-selectable {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.checkbox {
+  height: 1.2rem;
+  width: 1.2rem;
+}
