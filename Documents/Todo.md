@@ -2,7 +2,7 @@
 
 Remember here to use state und utilize props. Also place the state(s) in the appropriate component(s).
 
-[ ] As user I want to be able to add new todos to my todo list so I can update my todo list when I find something else that I need to do.
+[x] As user I want to be able to add new todos to my todo list so I can update my todo list when I find something else that I need to do.
 
 [ ] As a user I want to be able to view all my todos in the same place, to get a good overview of what I have to do.
 
