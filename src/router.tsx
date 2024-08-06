@@ -3,8 +3,8 @@ import {
   createRoutesFromElements,
   Route,
 } from "react-router-dom";
-import { App, TodoMainMenu } from "./components";
-import { AboutPage, TodoListPage } from "./pages";
+import { App } from "./components";
+import { AboutPage, TodoListPage, TodoMainMenu } from "./pages";
 
 export const router = createBrowserRouter(
   createRoutesFromElements(
