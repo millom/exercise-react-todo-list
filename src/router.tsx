@@ -4,7 +4,7 @@ import {
   Route,
 } from "react-router-dom";
 import { App } from "./components";
-import { AboutPage, TodoListPage, AddTodoPage } from "./pages";
+import { AboutPage, ListTodosPage, AddTodoPage } from "./pages";
 
 export const router = createBrowserRouter(
   createRoutesFromElements(
