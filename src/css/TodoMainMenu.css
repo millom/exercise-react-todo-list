@@ -10,6 +10,14 @@
   width: 80%;
 }
 
+#headerSelectId {
+  width: 6rem;
+  height: 2rem;
+  color: black;
+  margin-top: 1rem;
+  margin-left: 0.5rem;
+}
+
 .btn {
   height: 3rem;
   width: 7rem;
@@ -29,7 +37,7 @@
 }
 
 .textarea {
-  width: 35rem;
+  width: 28rem;
   height: 3.3rem;
   font-size: large;
   line-height: 1.5;

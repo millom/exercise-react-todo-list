@@ -22,6 +22,7 @@ export function TodoItem({
         onChange={(v) => (todoItem.done = v.target.checked)}
         // ref={todoItem.ref}
       ></input>
+
       <textarea
         className="readonly-textarea not-selectable"
         readOnly

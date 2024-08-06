@@ -5,6 +5,6 @@ export interface ITodoItem {
   // ref: RefObject<HTMLInputElement>;
   text: string;
   done: boolean;
-  timestamp: Date;
+  timestamp: string;
   username: string;
 }
