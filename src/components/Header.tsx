@@ -1,7 +1,12 @@
 import { ReactElement } from "react";
 import { Link } from "react-router-dom";
+import { useTodosContext } from "../hooks";
 
-export function Header(): ReactElement {
+interface IHeaderProps {
+  removeTodoFunc: () => void;
+}
+
+export function Header({ removeTodoFunc }: IHeaderProps): ReactElement {
   return (
     <div className="header">
       <div className="">My todo list</div>
@@ -19,6 +24,9 @@ export function Header(): ReactElement {
           About
         </Link>
       </div>
+      <button className="btn" onClick={removeTodoFunc}>
+        Remove selected
+      </button>
     </div>
   );
 }

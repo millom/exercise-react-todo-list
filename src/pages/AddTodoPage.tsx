@@ -59,9 +59,9 @@ export function AddTodoPage(): ReactElement {
               </select>
             </div>
           </div>
-          <button className="btn" onClick={removeTodoFunc}>
+          {/* <button className="btn" onClick={removeTodoFunc}>
             Remove (done)
-          </button>
+          </button> */}
         </div>
       </div>
     </>

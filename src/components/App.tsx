@@ -42,7 +42,7 @@ export function App(): ReactElement {
   return (
     // <div className="todo-main-container">
     <>
-      <Header />
+      <Header removeTodoFunc={removeTodoFunc} />
       <Outlet context={todosContext} />
       {/* <TodoMainMenu addTodo={addTotdoFunc} removeTodo={removeTodoFunc} />
       <TodoList
