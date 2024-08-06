@@ -1,7 +1,7 @@
 import { ReactElement, useState } from "react";
 import { Outlet } from "react-router-dom";
 import { Header } from ".";
-import { ITodoItem } from "../interfaces";
+import { ITodoItem, ITodosContext } from "../interfaces";
 import { addFunc, removeFunc } from "../customTypes";
 
 export function App(): ReactElement {
@@ -9,7 +9,7 @@ export function App(): ReactElement {
   const [todoArray, setTodoArray] = useState(defaultTodoArray);
   const [id, setId] = useState(0);
 
-  const addTotdoFunc: addFunc = (todoItem: ITodoItem) => {
+  const addTodoFunc: addFunc = (todoItem: ITodoItem) => {
     todoItem.id = id;
     todoArray.push(todoItem);
     setTodoArray(todoArray);
@@ -30,11 +30,18 @@ export function App(): ReactElement {
     setTodoArray(newTodoArray);
   };
 
+  const todosContext: ITodosContext = {
+    todoArray,
+    addTodoFunc,
+    removeTodoFunc,
+    removeSelectedTodoFunc,
+  };
+
   return (
     // <div className="todo-main-container">
     <>
       <Header />
-      <Outlet />
+      <Outlet context={todosContext} />
       {/* <TodoMainMenu addTodo={addTotdoFunc} removeTodo={removeTodoFunc} />
       <TodoList
         todoArray={todoArray}
