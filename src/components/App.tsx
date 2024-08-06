@@ -1,6 +1,6 @@
 import { ReactElement, useState } from "react";
 import { Outlet } from "react-router-dom";
-import { TodoList, TodoMainMenu, Header } from ".";
+import { TodoMainMenu, Header } from ".";
 import { ITodoItem } from "../interfaces";
 import { addFunc, removeFunc } from "../customTypes";
 

@@ -1,7 +1,7 @@
 import { ReactElement } from "react";
-import { TodoItem } from ".";
+import { TodoItem } from "../components";
 import { ITodoItem } from "../interfaces";
-import { addRemoveFunc, removeByIdFunc } from "../customTypes";
+import { removeByIdFunc } from "../customTypes";
 
 interface ITodoListProps {
   todoArray: Array<ITodoItem>;
