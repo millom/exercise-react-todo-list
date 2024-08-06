@@ -23,6 +23,14 @@
   /* selc */
 }
 
+.username-timestamp {
+  font-size: 0.5rem;
+}
+
+.username {
+  font-weight: bold;
+}
+
 .not-selectable {
   -webkit-touch-callout: none;
   -webkit-user-select: none;

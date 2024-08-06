@@ -30,6 +30,18 @@ export function TodoItem({
       >
         {/* {todoItem.text} */}
       </textarea>
+      <div className="username-timestamp">
+        <span className="username">{todoItem.username}: </span>
+        <span>{todoItem.timestamp}</span>
+        {/* <div className="todo-item-label-p">
+          <label>Username:</label>
+          <span>{todoItem.username}</span>
+        </div>
+        <div className="todo-item-label-p">
+          <label>Timestamp:</label>
+          <p>{todoItem.timestamp}</p>
+        </div> */}
+      </div>
       <button className="sm-btn" onClick={() => RemoveItem(todoItem.id)}>
         Remove
       </button>
