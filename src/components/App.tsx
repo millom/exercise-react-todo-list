@@ -1,5 +1,5 @@
 import { ReactElement, useState } from "react";
-import { TodoList, TodoMainMenu } from ".";
+import { TodoList, TodoMainMenu, Header } from ".";
 import { ITodoItem } from "../interfaces";
 import { addFunc, removeFunc } from "../customTypes";
 

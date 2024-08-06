@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { App } from "./components/App.tsx";
+import { App } from "./components";
 
 import "./css/index.css";
 import "./css/TodoItem.css";
