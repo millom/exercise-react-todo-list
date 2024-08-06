@@ -26,8 +26,16 @@ export function TodoItem({
         value={todoItem.text}
       ></textarea>
       <div className="username-timestamp">
-        <span className="username">{todoItem.username}: </span>
-        <span>{todoItem.timestamp}</span>
+        <span className="username" title={todoItem.username}>
+          {todoItem.username}:
+        </span>
+        <span title={todoItem.timestamp}>{todoItem.timestamp}</span>
+        {/* <span
+          data-tooltip="Custom tooltip text."
+          data-tooltip-position="bottom"
+        >
+          {todoItem.timestamp}
+        </span> */}
       </div>
       <button className="sm-btn" onClick={() => RemoveItem(todoItem.id)}>
         Remove
