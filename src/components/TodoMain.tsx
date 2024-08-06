@@ -1,32 +1,26 @@
-import { ReactElement, RefObject, useRef, useState } from "react";
+import { ReactElement, useState } from "react";
 import { TodoList, TodoMainMenu } from ".";
 import { ITodoItem } from "../interfaces";
+import { addFunc, removeFunc } from "../customTypes";
 
 export function TodoMain(): ReactElement {
   const defaultTodoArray: Array<ITodoItem> = [];
   const [todoArray, setTodoArray] = useState(defaultTodoArray);
   const [id, setId] = useState(0);
-  const textAreaRef: RefObject<HTMLTextAreaElement> = useRef(null);
-  const usernameRef: RefObject<HTMLSelectElement> = useRef(null);
 
-  const addTotdoFunc = () => {
-    const todoItem: ITodoItem = {
-      id: id,
-      text: textAreaRef.current!.value,
-      done: false,
-      username: usernameRef.current!.value,
-      timestamp: new Date().toLocaleString("sv-SW"),
-    };
+  const addTotdoFunc: addFunc = (todoItem: ITodoItem) => {
+    todoItem.id = id;
     todoArray.push(todoItem);
     setTodoArray(todoArray);
     setId(id + 1);
     console.log(todoArray);
   };
 
-  const removeTodoFunc = () => {
+  const removeTodoFunc: removeFunc = () => {
     const newTodoArray = todoArray.filter((item) => !item.done);
 
     setTodoArray(newTodoArray);
+    console.log(newTodoArray);
   };
 
   const removeSelectedTodoFunc = (id: number) => {
@@ -37,12 +31,7 @@ export function TodoMain(): ReactElement {
 
   return (
     <div className="todo-main-container">
-      <TodoMainMenu
-        addTodo={addTotdoFunc}
-        removeTodo={removeTodoFunc}
-        textareaRef={textAreaRef}
-        usernameRef={usernameRef}
-      />
+      <TodoMainMenu addTodo={addTotdoFunc} removeTodo={removeTodoFunc} />
       <TodoList
         todoArray={todoArray}
         RemoveItem={removeSelectedTodoFunc}

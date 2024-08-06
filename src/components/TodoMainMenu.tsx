@@ -1,20 +1,30 @@
-import { ReactElement, RefObject } from "react";
-import { addRemoveFunc } from "../customTypes";
-import { IUsername } from "../interfaces";
+import { ReactElement, RefObject, useRef } from "react";
+import { addFunc, removeFunc } from "../customTypes";
+import { ITodoItem, IUsername } from "../interfaces";
 
 interface ITodoMainMenuProps {
-  addTodo: addRemoveFunc;
-  removeTodo: addRemoveFunc;
-  textareaRef: RefObject<HTMLTextAreaElement>;
-  usernameRef: RefObject<HTMLSelectElement>;
+  addTodo: addFunc;
+  removeTodo: removeFunc;
 }
 
 export function TodoMainMenu({
   addTodo,
   removeTodo,
-  textareaRef,
-  usernameRef,
 }: ITodoMainMenuProps): ReactElement {
+  const textAreaRef: RefObject<HTMLTextAreaElement> = useRef(null);
+  const usernameRef: RefObject<HTMLSelectElement> = useRef(null);
+
+  const addTodoListLocal = () => {
+    const todoItem: ITodoItem = {
+      id: -1,
+      text: textAreaRef.current!.value,
+      done: false,
+      username: usernameRef.current!.value,
+      timestamp: new Date().toLocaleDateString("sv-SW"),
+    };
+    addTodo(todoItem);
+  };
+
   const userNames: Array<IUsername> = [
     { id: 0, name: "MFL" },
     { id: 1, name: "RFL" },
@@ -26,10 +36,10 @@ export function TodoMainMenu({
       <div className="main-menu-container">
         <div className="main-menu-layout">
           <div className="add-container">
-            <button className="btn" onClick={addTodo}>
+            <button className="btn" onClick={addTodoListLocal}>
               Add
             </button>
-            <textarea className="textarea" ref={textareaRef}></textarea>
+            <textarea className="textarea" ref={textAreaRef}></textarea>
             <div>
               <label htmlFor="headerSelectId">User:</label>
               <select
