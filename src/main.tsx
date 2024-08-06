@@ -6,8 +6,8 @@ import { router } from "./router";
 
 import "./css/index.css";
 import "./css/TodoItem.css";
-import "./css/TodoList.css";
-import "./css/TodoMainMenu.css";
+import "./css/TodoListPage.css";
+import "./css/AddTodoPage.css";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
