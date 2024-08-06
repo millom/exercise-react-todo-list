@@ -18,9 +18,9 @@ Remember here to use state und utilize props. Also place the state(s) in the app
 
 When adding a router, handling state becomes more challenging. Consider using useOutletContext - see the docs on [React Router](https://reactrouter.com/en/main) for more documentation - or use the regular built-in context in React.
 
-[ ] As user I still want to be able to add new todos but I would like to do it on a different page so the UI becomes more clean.
+[x] As user I still want to be able to add new todos but I would like to do it on a different page so the UI becomes more clean.
 
-[ ] As a user I want an about page that describes the purpose of the todo list and displays the number of todos currently in the list. This must also be on its own page seperated from the others.
+[x] As a user I want an about page that describes the purpose of the todo list and displays the number of todos currently in the list. This must also be on its own page seperated from the others.
 
 ### Step 3 - Advanced features
 
