@@ -7,7 +7,7 @@ interface ITodoMainMenuProps {
   removeTodo: removeFunc;
 }
 
-export function TodoMainMenu({
+export function AddTodoPage({
   addTodo,
   removeTodo,
 }: ITodoMainMenuProps): ReactElement {
