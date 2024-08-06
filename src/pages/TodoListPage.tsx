@@ -8,7 +8,7 @@ interface ITodoListProps {
   RemoveItem: removeByIdFunc;
 }
 
-export function TodoList({
+export function TodoListPage({
   todoArray,
   RemoveItem,
 }: ITodoListProps): ReactElement {

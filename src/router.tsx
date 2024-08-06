@@ -4,7 +4,7 @@ import {
   Route,
 } from "react-router-dom";
 import { App, TodoMainMenu } from "./components";
-import { AboutPage, TodoList } from "./pages";
+import { AboutPage, TodoListPage } from "./pages";
 
 export const router = createBrowserRouter(
   createRoutesFromElements(

@@ -1,2 +1,2 @@
 export * from "./AboutPage";
-export * from "./TodoList";
+export * from "./TodoListPage";
