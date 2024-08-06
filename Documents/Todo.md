@@ -24,7 +24,7 @@ When adding a router, handling state becomes more challenging. Consider using us
 
 ### Step 3 - Advanced features
 
-[ ] As a user I want to be able to edit existing todos in case I remember something that has to do with a specific todo.
+[x] As a user I want to be able to edit existing todos in case I remember something that has to do with a specific todo.
 
 [ ] As a user I want to be able to move todos up and down in order to prioritize what I have to do.
 
