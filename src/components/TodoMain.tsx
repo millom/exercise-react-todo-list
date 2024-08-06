@@ -16,27 +16,21 @@ export function TodoMain(): ReactElement {
       done: false,
       username: usernameRef.current!.value,
       timestamp: new Date().toLocaleString("sv-SW"),
-      // ref: useRef(null),
     };
     todoArray.push(todoItem);
     setTodoArray(todoArray);
     setId(id + 1);
-    //  = [...todoArray, todoItem];
     console.log(todoArray);
   };
 
   const removeTodoFunc = () => {
-    // console.log("Old", todoArray, todoArray[0].done === true);
     const newTodoArray = todoArray.filter((item) => !item.done);
-    // console.log("New", newTodoArray);
 
     setTodoArray(newTodoArray);
   };
 
   const removeSelectedTodoFunc = (id: number) => {
-    // console.log("Old", todoArray, todoArray[0].done === true);
     const newTodoArray = todoArray.filter((item) => item.id !== id);
-    // console.log("New", newTodoArray);
 
     setTodoArray(newTodoArray);
   };
