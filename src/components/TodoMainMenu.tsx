@@ -1,5 +1,6 @@
 import { ReactElement, RefObject } from "react";
 import { addRemoveFunc } from "../customTypes";
+import { IUsername } from "../interfaces";
 
 interface ITodoMainMenuProps {
   addTodo: addRemoveFunc;
@@ -14,6 +15,12 @@ export function TodoMainMenu({
   textareaRef,
   usernameRef,
 }: ITodoMainMenuProps): ReactElement {
+  const userNames: Array<IUsername> = [
+    { id: 0, name: "MFL" },
+    { id: 1, name: "RFL" },
+    { id: 2, name: "JFL" },
+  ];
+
   return (
     <>
       <div className="main-menu-container">
@@ -31,15 +38,11 @@ export function TodoMainMenu({
                 defaultValue={0}
                 ref={usernameRef}
               >
-                <option key={0} value="MFL">
-                  MFL
-                </option>
-                <option key={1} value="RFL">
-                  RFL
-                </option>
-                <option key={2} value="JFL">
-                  JFL
-                </option>
+                {userNames.map((user: IUsername) => (
+                  <option key={user.id} value={user.name}>
+                    {user.name}
+                  </option>
+                ))}
               </select>
             </div>
           </div>

@@ -5,3 +5,8 @@ export interface ITodoItem {
   timestamp: string;
   username: string;
 }
+
+export interface IUsername {
+  id: number;
+  name: string;
+}
