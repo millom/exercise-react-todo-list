@@ -30,12 +30,14 @@ export function App(): ReactElement {
   };
 
   return (
-    <div className="todo-main-container">
-      <TodoMainMenu addTodo={addTotdoFunc} removeTodo={removeTodoFunc} />
+    // <div className="todo-main-container">
+    <>
+      <Header />
+      {/* <TodoMainMenu addTodo={addTotdoFunc} removeTodo={removeTodoFunc} />
       <TodoList
         todoArray={todoArray}
         RemoveItem={removeSelectedTodoFunc}
-      ></TodoList>
-    </div>
+      ></TodoList> */}
+    </>
   );
 }
