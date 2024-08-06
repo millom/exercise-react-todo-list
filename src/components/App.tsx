@@ -1,6 +1,6 @@
 import { ReactElement, useState } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
-import { Header } from ".";
+import { Header, TodoItem } from ".";
 import { ITodoItem, ITodosContext } from "../interfaces";
 import { addFunc, removeFunc } from "../customTypes";
 
@@ -26,6 +26,13 @@ export function App(): ReactElement {
     console.log(newTodoArray);
   };
 
+  // Not used for edit
+  // const editTodoFunc = (todo: ITodoItem) => {
+  //   // const newTodoArray = todoArray.filter((item) => item.id !== id);
+
+  //   setTodoArray([...todoArray]);
+  // };
+
   const removeSelectedTodoFunc = (id: number) => {
     const newTodoArray = todoArray.filter((item) => item.id !== id);
 
@@ -35,6 +42,7 @@ export function App(): ReactElement {
   const todosContext: ITodosContext = {
     todoArray,
     addTodoFunc,
+    // editTodoFunc,
     removeTodoFunc,
     removeSelectedTodoFunc,
   };

@@ -13,7 +13,9 @@ export interface IUsername {
 
 export interface ITodosContext {
   todoArray: Array<ITodoItem>;
+  // todoItem?: ITodoItem;
   addTodoFunc: (todo: ITodoItem) => void;
+  // editTodoFunc: (todo: ITodoItem) => void; // Not used fpor edit
   removeTodoFunc: () => void;
   removeSelectedTodoFunc: (id: number) => void;
 }

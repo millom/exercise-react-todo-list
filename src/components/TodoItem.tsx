@@ -1,4 +1,5 @@
 import { ReactElement } from "react";
+import { useNavigate } from "react-router-dom";
 import { ITodoItem } from "../interfaces";
 import { removeByIdFunc } from "../customTypes";
 
@@ -11,6 +12,14 @@ export function TodoItem({
   todoItem,
   RemoveItem,
 }: ITodoItemProps): ReactElement {
+  const navigate = useNavigate();
+  const EditItem = (todo: ITodoItem) => {
+    // navigate("EditPage", { todo: ITodoItem }); // options: { todo: ITodoItem });
+    navigate("/edit", {
+      state: todo,
+    });
+  };
+
   return (
     <div className="todo-item-container">
       <input
@@ -39,6 +48,9 @@ export function TodoItem({
       </div>
       <button className="sm-btn" onClick={() => RemoveItem(todoItem.id)}>
         Remove
+      </button>
+      <button className="sm-btn" onClick={() => EditItem(todoItem)}>
+        Edit
       </button>
     </div>
   );

@@ -4,7 +4,7 @@ import {
   Route,
 } from "react-router-dom";
 import { App } from "./components";
-import { AboutPage, ListTodosPage, AddTodoPage } from "./pages";
+import { AboutPage, ListTodosPage, AddTodoPage, EditPage } from "./pages";
 
 export const router = createBrowserRouter(
   createRoutesFromElements(
@@ -12,6 +12,7 @@ export const router = createBrowserRouter(
       <Route index element={<ListTodosPage />} />
       <Route path="add-todo" element={<AddTodoPage />} />
       <Route path="about" element={<AboutPage />} />
+      <Route path="edit" element={<EditPage />} />
     </Route>
   )
 );
