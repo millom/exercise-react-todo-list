@@ -38,7 +38,9 @@ export function TodoItem({
         <span className="username" title={todoItem.username}>
           {todoItem.username}:
         </span>
-        <span title={todoItem.timestamp}>{todoItem.timestamp}</span>
+        <span title={todoItem.timestamp.toLocaleDateString()}>
+          {todoItem.timestamp.toLocaleDateString()}
+        </span>
         {/* <span
           data-tooltip="Custom tooltip text."
           data-tooltip-position="bottom"

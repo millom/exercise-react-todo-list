@@ -23,7 +23,8 @@ export function AddTodoPage(): ReactElement {
       text: textAreaRef.current!.value,
       done: false,
       username: usernameRef.current!.value,
-      timestamp: new Date().toLocaleDateString("sv-SW"),
+      timestamp: new Date(),
+      // timestamp: new Date().toLocaleString("sv-SW"),
     };
     addTodoFunc(todoItem);
   };
