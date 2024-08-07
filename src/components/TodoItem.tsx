@@ -1,4 +1,4 @@
-import { ReactElement } from "react";
+import { ReactElement, DragEvent } from "react";
 import { useNavigate } from "react-router-dom";
 import { ITodoItem } from "../interfaces";
 import { removeByIdFunc } from "../customTypes";
@@ -8,6 +8,9 @@ interface ITodoItemProps {
   RemoveItem: removeByIdFunc;
   selectedIdx: number;
   updateSelectedIdx: (idx: number) => void;
+  handleDragStart: (event: DragEvent<HTMLDivElement>) => void;
+  enableDropping: (event: DragEvent<HTMLDivElement>) => void;
+  handleDrop: (event: DragEvent<HTMLDivElement>) => void;
 }
 
 export function TodoItem({
@@ -15,7 +18,10 @@ export function TodoItem({
   RemoveItem,
   selectedIdx,
   updateSelectedIdx,
-}: ITodoItemProps): ReactElement {
+  handleDragStart,
+  enableDropping,
+  handleDrop,
+}: Readonly<ITodoItemProps>): ReactElement {
   const navigate = useNavigate();
   const EditItem = (todo: ITodoItem) => {
     // navigate("EditPage", { todo: ITodoItem }); // options: { todo: ITodoItem });
@@ -26,12 +32,17 @@ export function TodoItem({
 
   return (
     <div
+      id={todoItem.id.toString()}
       className={
         todoItem.id === selectedIdx
           ? "todo-item-container selected dotted-border"
           : "todo-item-container"
       }
       onClick={() => updateSelectedIdx(todoItem.id)}
+      draggable="true"
+      onDragStart={handleDragStart}
+      onDragOver={enableDropping}
+      onDrop={(event) => handleDrop(event, todoItem.id)}
     >
       <input
         key={todoItem.id}

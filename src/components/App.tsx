@@ -1,4 +1,4 @@
-import { ReactElement, useState } from "react";
+import { ReactElement, DragEvent, useState } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
 import { Header, TodoItem } from ".";
 import { ITodoItem, ITodosContext } from "../interfaces";
@@ -67,10 +67,14 @@ export function App(): ReactElement {
     // const newTodoArray = todoArray.sort((item) => item.id !== id);
     if (sortType === SortType.Custom) return;
     console.log(todoArray);
-    let newTodoArray =
+    const newTodoArray =
       sortType === SortType.Timestamp
-        ? todoArray.sort((a, b) => (a.timestamp < b.timestamp ? 1 : -1))
-        : todoArray.sort((a, b) => (a.username < b.username ? -1 : 1));
+        ? todoArray.sort((a: ITodoItem, b: ITodoItem) =>
+            a.timestamp < b.timestamp ? 1 : -1
+          )
+        : todoArray.sort((a: ITodoItem, b: ITodoItem) =>
+            a.username < b.username ? -1 : 1
+          );
     console.log(newTodoArray);
 
     // setTodoArray(newTodoArray);
@@ -81,6 +85,35 @@ export function App(): ReactElement {
     setSelectedIdx(idx);
   };
 
+  const handleDragStart = (event: DragEvent<HTMLDivElement>) => {
+    event.dataTransfer.setData("text", event.currentTarget.id);
+    console.log(handleDragStart);
+  };
+
+  const enableDropping = (event: DragEvent<HTMLDivElement>) => {
+    event.preventDefault();
+    console.log(enableDropping);
+  };
+
+  const handleDrop = (event: DragEvent<HTMLDivElement>, id: number) => {
+    const dragedId = event.dataTransfer.getData("text");
+    console.log(
+      `Revceiver(${id}) Somebody dropped an element with id: ${dragedId}`
+    );
+    const targetId: number = todoArray.findIndex(
+      (todo: ITodoItem) => todo.id.toString() == id.toString()
+    );
+    const sourseId: number = todoArray.findIndex(
+      (todo: ITodoItem) => todo.id.toString() == dragedId.toString()
+    );
+    const todo = todoArray[sourseId];
+    todoArray.splice(sourseId, 1);
+    todoArray.splice(targetId, 0, todo);
+    setTodoArray([...todoArray]);
+    console.log(todoArray);
+    // indexOf((todo: ITodoItem) => todo.id === dragedId);
+  };
+
   const todosContext: ITodosContext = {
     todoArray,
     addTodoFunc,
@@ -89,6 +122,9 @@ export function App(): ReactElement {
     removeSelectedTodoFunc,
     selectedIdx,
     updateSelectedIdx,
+    handleDragStart,
+    enableDropping,
+    handleDrop,
   };
 
   return (
