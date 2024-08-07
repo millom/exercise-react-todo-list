@@ -14,7 +14,8 @@ import { useTodosContext } from "../hooks";
 //   RemoveItem,
 // }: ITodoListProps): ReactElement {
 export function ListTodosPage(): ReactElement {
-  const { todoArray, removeSelectedTodoFunc } = useTodosContext();
+  const { todoArray, removeSelectedTodoFunc, selectedIdx, updateSelectedIdx } =
+    useTodosContext();
 
   return (
     <div className="todo-list-container">
@@ -24,6 +25,8 @@ export function ListTodosPage(): ReactElement {
             key={todo.id}
             todoItem={todo}
             RemoveItem={removeSelectedTodoFunc}
+            selectedIdx={selectedIdx}
+            updateSelectedIdx={updateSelectedIdx}
           />
         ))}
       </div>

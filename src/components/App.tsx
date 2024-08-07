@@ -10,6 +10,8 @@ export function App(): ReactElement {
   const [todoArray, setTodoArray] = useState(defaultTodoArray);
   const [id, setId] = useState(0);
   const [sortType, setSortType] = useState(SortType.Custom);
+  const [selectedIdx, setSelectedIdx] = useState(0);
+
   const navigate = useNavigate();
 
   const addTodoFunc: addFunc = (todoItem: ITodoItem) => {
@@ -73,12 +75,18 @@ export function App(): ReactElement {
     setTodoArray([...newTodoArray]);
   };
 
+  const updateSelectedIdx = (idx: number) => {
+    setSelectedIdx(idx);
+  };
+
   const todosContext: ITodosContext = {
     todoArray,
     addTodoFunc,
     // editTodoFunc,
     removeTodoFunc,
     removeSelectedTodoFunc,
+    selectedIdx,
+    updateSelectedIdx,
   };
 
   return (

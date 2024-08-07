@@ -18,4 +18,6 @@ export interface ITodosContext {
   // editTodoFunc: (todo: ITodoItem) => void; // Not used fpor edit
   removeTodoFunc: () => void;
   removeSelectedTodoFunc: (id: number) => void;
+  selectedIdx: number;
+  updateSelectedIdx: (idx: number) => void;
 }

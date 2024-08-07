@@ -6,11 +6,15 @@ import { removeByIdFunc } from "../customTypes";
 interface ITodoItemProps {
   todoItem: ITodoItem;
   RemoveItem: removeByIdFunc;
+  selectedIdx: number;
+  updateSelectedIdx: (idx: number) => void;
 }
 
 export function TodoItem({
   todoItem,
   RemoveItem,
+  selectedIdx,
+  updateSelectedIdx,
 }: ITodoItemProps): ReactElement {
   const navigate = useNavigate();
   const EditItem = (todo: ITodoItem) => {
@@ -21,7 +25,14 @@ export function TodoItem({
   };
 
   return (
-    <div className="todo-item-container">
+    <div
+      className={
+        todoItem.id === selectedIdx
+          ? "todo-item-container selected dotted-border"
+          : "todo-item-container"
+      }
+      onClick={() => updateSelectedIdx(todoItem.id)}
+    >
       <input
         key={todoItem.id}
         type="checkbox"
@@ -30,10 +41,15 @@ export function TodoItem({
       ></input>
 
       <textarea
-        className="readonly-textarea not-selectable"
+        className={
+          todoItem.id === selectedIdx
+            ? "readonly-textarea not-selectable selected"
+            : "readonly-textarea not-selectable"
+        }
         readOnly
         value={todoItem.text}
       ></textarea>
+
       <div className="username-timestamp">
         <span className="username" title={todoItem.username}>
           {todoItem.username}:
@@ -48,9 +64,11 @@ export function TodoItem({
           {todoItem.timestamp}
         </span> */}
       </div>
+
       <button className="sm-btn" onClick={() => RemoveItem(todoItem.id)}>
         Remove
       </button>
+
       <button className="sm-btn" onClick={() => EditItem(todoItem)}>
         Edit
       </button>
