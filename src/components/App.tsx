@@ -18,6 +18,8 @@ export function App(): ReactElement {
     todoItem.id = id;
     todoArray.push(todoItem);
     setTodoArray(todoArray);
+    updateSelectedIdx(id);
+    sortListFunc(SortType.Timestamp);
     setId(id + 1);
     console.log(todoArray);
     navigate("/");
