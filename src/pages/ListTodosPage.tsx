@@ -22,6 +22,7 @@ export function ListTodosPage(): ReactElement {
     handleDragStart,
     enableDropping,
     handleDrop,
+    MoveItem,
   } = useTodosContext();
 
   return (
@@ -37,6 +38,7 @@ export function ListTodosPage(): ReactElement {
             handleDragStart={handleDragStart}
             enableDropping={enableDropping}
             handleDrop={handleDrop}
+            MoveItem={MoveItem}
           />
         ))}
       </div>

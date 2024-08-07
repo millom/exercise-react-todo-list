@@ -1,4 +1,4 @@
-import { DragEvent } from "react";
+import { DragEvent, MouseEvent } from "react";
 
 export interface ITodoItem {
   id: number;
@@ -25,4 +25,9 @@ export interface ITodosContext {
   handleDragStart: (event: DragEvent<HTMLDivElement>) => void;
   enableDropping: (event: DragEvent<HTMLDivElement>) => void;
   handleDrop: (event: DragEvent<HTMLDivElement>, id: number) => void;
+  MoveItem: (
+    event: MouseEvent<HTMLButtonElement>,
+    todoToMove: ITodoItem,
+    movement: number
+  ) => void;
 }

@@ -10,7 +10,12 @@ interface ITodoItemProps {
   updateSelectedIdx: (idx: number) => void;
   handleDragStart: (event: DragEvent<HTMLDivElement>) => void;
   enableDropping: (event: DragEvent<HTMLDivElement>) => void;
-  handleDrop: (event: DragEvent<HTMLDivElement>) => void;
+  handleDrop: (event: DragEvent<HTMLDivElement>, id: number) => void;
+  MoveItem: (
+    event: MouseEvent<HTMLButtonElement>,
+    todoToMove: ITodoItem,
+    movement: number
+  ) => void;
 }
 
 export function TodoItem({
@@ -21,6 +26,7 @@ export function TodoItem({
   handleDragStart,
   enableDropping,
   handleDrop,
+  MoveItem,
 }: Readonly<ITodoItemProps>): ReactElement {
   const navigate = useNavigate();
   const EditItem = (todo: ITodoItem) => {
@@ -92,11 +98,17 @@ export function TodoItem({
           todoItem.id !== selectedIdx ? "up-down-btns disabled" : "up-down-btns"
         }
       >
-        <button className="sm-btn" onClick={() => RemoveItem(todoItem.id)}>
+        <button
+          className="sm-btn"
+          onClick={(event) => MoveItem(event, todoItem, -1)}
+        >
           Up
         </button>
 
-        <button className="sm-btn" onClick={() => EditItem(todoItem)}>
+        <button
+          className="sm-btn"
+          onClick={(event) => MoveItem(event, todoItem, 1)}
+        >
           Down
         </button>
       </div>

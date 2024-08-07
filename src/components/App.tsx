@@ -1,4 +1,4 @@
-import { ReactElement, DragEvent, useState } from "react";
+import { ReactElement, DragEvent, MouseEvent, useState } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
 import { Header, TodoItem } from ".";
 import { ITodoItem, ITodosContext } from "../interfaces";
@@ -114,6 +114,31 @@ export function App(): ReactElement {
     // indexOf((todo: ITodoItem) => todo.id === dragedId);
   };
 
+  const MoveItem = (
+    event: MouseEvent<HTMLButtonElement>,
+    todoToMove: ITodoItem,
+    movement: number
+  ) => {
+    console.log("MoveItem", todoToMove, movement);
+    const idx: number = todoArray.findIndex(
+      (todo: ITodoItem) => todo === todoToMove
+    );
+    if (
+      (idx <= 0 && movement < 0) ||
+      (idx >= todoArray.length - 1 && movement > 0)
+    ) {
+      event.stopPropagation();
+      return;
+    }
+
+    todoArray.splice(idx, 1);
+    todoArray.splice(idx + movement, 0, todoToMove);
+
+    setTodoArray([...todoArray]);
+
+    event.stopPropagation();
+  };
+
   const todosContext: ITodosContext = {
     todoArray,
     addTodoFunc,
@@ -125,6 +150,7 @@ export function App(): ReactElement {
     handleDragStart,
     enableDropping,
     handleDrop,
+    MoveItem,
   };
 
   return (
