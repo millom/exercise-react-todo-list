@@ -28,4 +28,4 @@ When adding a router, handling state becomes more challenging. Consider using us
 
 [ ] As a user I want to be able to move todos up and down in order to prioritize what I have to do.
 
-[ ] As a user I want to be able to sort my todos after either timestamp or author.
+[x] As a user I want to be able to sort my todos after either timestamp or author.
