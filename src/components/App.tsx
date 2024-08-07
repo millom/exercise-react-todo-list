@@ -67,7 +67,7 @@ export function App(): ReactElement {
     console.log(todoArray);
     let newTodoArray =
       sortType === SortType.Timestamp
-        ? todoArray.sort((a, b) => (a.timestamp < b.timestamp ? -1 : 1))
+        ? todoArray.sort((a, b) => (a.timestamp < b.timestamp ? 1 : -1))
         : todoArray.sort((a, b) => (a.username < b.username ? -1 : 1));
     console.log(newTodoArray);
 
