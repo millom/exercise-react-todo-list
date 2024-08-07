@@ -66,3 +66,13 @@
   box-shadow: 0.2rem 0.2rem rgba(70, 70, 70, 0.3);
   border: 0.2rem dotted rgb(174, 225, 70);
 }
+
+.up-down-btns {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.disabled {
+  display: none;
+}

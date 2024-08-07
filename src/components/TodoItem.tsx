@@ -65,6 +65,8 @@ export function TodoItem({
         </span> */}
       </div>
 
+      {/* <div className={todoItem.id === selectedIdx ? "disabled" : ""}> */}
+      {/* <div className=""> */}
       <button className="sm-btn" onClick={() => RemoveItem(todoItem.id)}>
         Remove
       </button>
@@ -72,6 +74,21 @@ export function TodoItem({
       <button className="sm-btn" onClick={() => EditItem(todoItem)}>
         Edit
       </button>
+      {/* </div> */}
+
+      <div
+        className={
+          todoItem.id !== selectedIdx ? "up-down-btns disabled" : "up-down-btns"
+        }
+      >
+        <button className="sm-btn" onClick={() => RemoveItem(todoItem.id)}>
+          Up
+        </button>
+
+        <button className="sm-btn" onClick={() => EditItem(todoItem)}>
+          Down
+        </button>
+      </div>
     </div>
   );
 }
