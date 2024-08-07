@@ -82,7 +82,7 @@ export function App(): ReactElement {
   };
 
   const updateSelectedIdx = (idx: number) => {
-    setSelectedIdx(idx);
+    setSelectedIdx(selectedIdx === idx ? -1 : idx);
   };
 
   const handleDragStart = (event: DragEvent<HTMLDivElement>) => {
