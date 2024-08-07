@@ -3,11 +3,13 @@ import { Outlet, useNavigate } from "react-router-dom";
 import { Header, TodoItem } from ".";
 import { ITodoItem, ITodosContext } from "../interfaces";
 import { addFunc, removeFunc } from "../customTypes";
+import { SortType } from "../enums";
 
 export function App(): ReactElement {
   const defaultTodoArray: Array<ITodoItem> = [];
   const [todoArray, setTodoArray] = useState(defaultTodoArray);
   const [id, setId] = useState(0);
+  const [sortType, setSortType] = useState(SortType.Custom);
   const navigate = useNavigate();
 
   const addTodoFunc: addFunc = (todoItem: ITodoItem) => {
@@ -39,6 +41,38 @@ export function App(): ReactElement {
     setTodoArray(newTodoArray);
   };
 
+  const updateSortType = (type: SortType) => {
+    setSortType(type);
+  };
+
+  const sortListFunc = (sortType: SortType) => {
+    console.log(sortType);
+    switch (sortType) {
+      case SortType.Custom:
+        break;
+      case SortType.Timestamp:
+        console.log("Timestamp");
+        break;
+      case SortType.Author:
+        console.log("Author");
+        break;
+      default:
+        console.log("Error");
+    }
+
+    // const newTodoArray = todoArray.sort((item) => item.id !== id);
+    if (sortType === SortType.Custom) return;
+    console.log(todoArray);
+    let newTodoArray =
+      sortType === SortType.Timestamp
+        ? todoArray.sort((a, b) => (a.timestamp < b.timestamp ? -1 : 1))
+        : todoArray.sort((a, b) => (a.username < b.username ? -1 : 1));
+    console.log(newTodoArray);
+
+    // setTodoArray(newTodoArray);
+    setTodoArray([...newTodoArray]);
+  };
+
   const todosContext: ITodosContext = {
     todoArray,
     addTodoFunc,
@@ -50,7 +84,12 @@ export function App(): ReactElement {
   return (
     // <div className="todo-main-container">
     <>
-      <Header removeTodoFunc={removeTodoFunc} />
+      <Header
+        removeTodoFunc={removeTodoFunc}
+        sortListFunc={sortListFunc}
+        sortType={sortType}
+        updateSortType={updateSortType}
+      />
       <Outlet context={todosContext} />
       {/* <TodoMainMenu addTodo={addTotdoFunc} removeTodo={removeTodoFunc} />
       <TodoList
