@@ -11,6 +11,7 @@ export function App(): ReactElement {
   const [id, setId] = useState(0);
   const [sortType, setSortType] = useState(SortType.Custom);
   const [selectedIdx, setSelectedIdx] = useState(0);
+  const [anyTodoSelected, setAnyTodoSelected] = useState(false);
 
   const navigate = useNavigate();
 
@@ -21,7 +22,7 @@ export function App(): ReactElement {
     updateSelectedIdx(id);
     sortListFunc(SortType.Timestamp);
     setId(id + 1);
-    // console.log(todoArray);
+    console.log(todoArray);
     navigate("/");
   };
 
@@ -29,7 +30,7 @@ export function App(): ReactElement {
     const newTodoArray = todoArray.filter((item) => !item.done);
 
     setTodoArray(newTodoArray);
-    // console.log(newTodoArray);
+    console.log(newTodoArray);
   };
 
   const removeSelectedTodoFunc = (id: number) => {
@@ -124,6 +125,11 @@ export function App(): ReactElement {
     event.stopPropagation();
   };
 
+  const updateAnyTodoSelected: () => void = () => {
+    const anySelected: boolean = todoArray.some((todo) => todo.done);
+    setAnyTodoSelected(anySelected);
+  };
+
   const todosContext: ITodosContext = {
     todoArray,
     addTodoFunc,
@@ -131,10 +137,13 @@ export function App(): ReactElement {
     removeSelectedTodoFunc,
     selectedIdx,
     updateSelectedIdx,
+
     handleDragStart,
     enableDropping,
     handleDrop,
     MoveItem,
+
+    updateAnyTodoSelected,
   };
 
   return (
@@ -144,6 +153,7 @@ export function App(): ReactElement {
         sortListFunc={sortListFunc}
         sortType={sortType}
         updateSortType={updateSortType}
+        showRemoveButton={anyTodoSelected}
       />
 
       <Outlet context={todosContext} />

@@ -7,6 +7,7 @@ interface IHeaderProps {
   sortListFunc: (type: SortType) => void;
   sortType: SortType;
   updateSortType: (sortType: SortType) => void;
+  showRemoveButton: boolean;
 }
 
 export function Header({
@@ -14,6 +15,7 @@ export function Header({
   sortListFunc,
   sortType,
   updateSortType,
+  showRemoveButton,
 }: IHeaderProps): ReactElement {
   return (
     <div className="header">
@@ -65,7 +67,12 @@ export function Header({
         </button>
       </div>
 
-      <button className="btn" onClick={removeTodoFunc}>
+      <button
+        className={showRemoveButton ? "btn" : "btn hidden"}
+        type="button"
+        // disabled={showRemoveButton ? undefined : true}
+        onClick={removeTodoFunc}
+      >
         Remove selected
       </button>
     </div>

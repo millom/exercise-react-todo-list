@@ -5,6 +5,7 @@ import { router } from "./router";
 // import { App } from "./components";
 
 import "./css/index.css";
+import "./css/Header.css";
 import "./css/TodoItem.css";
 import "./css/ListTodosPage.css";
 import "./css/AddTodoPage.css";

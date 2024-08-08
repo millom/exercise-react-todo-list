@@ -30,4 +30,5 @@ export interface ITodosContext {
     todoToMove: ITodoItem,
     movement: number
   ) => void;
+  updateAnyTodoSelected: () => void;
 }

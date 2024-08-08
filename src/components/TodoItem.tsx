@@ -1,4 +1,4 @@
-import { ReactElement, DragEvent } from "react";
+import { ReactElement, ChangeEvent, DragEvent, MouseEvent } from "react";
 import { useNavigate } from "react-router-dom";
 import { ITodoItem } from "../interfaces";
 import { removeByIdFunc } from "../customTypes";
@@ -8,6 +8,7 @@ interface ITodoItemProps {
   RemoveItem: removeByIdFunc;
   selectedIdx: number;
   updateSelectedIdx: (idx: number) => void;
+
   handleDragStart: (event: DragEvent<HTMLDivElement>) => void;
   enableDropping: (event: DragEvent<HTMLDivElement>) => void;
   handleDrop: (event: DragEvent<HTMLDivElement>, id: number) => void;
@@ -16,6 +17,8 @@ interface ITodoItemProps {
     todoToMove: ITodoItem,
     movement: number
   ) => void;
+
+  updateAnyTodoSelected: () => void;
 }
 
 export function TodoItem({
@@ -27,13 +30,24 @@ export function TodoItem({
   enableDropping,
   handleDrop,
   MoveItem,
+
+  updateAnyTodoSelected,
 }: Readonly<ITodoItemProps>): ReactElement {
+  // }: ITodoItemProps): ReactElement {
   const navigate = useNavigate();
 
   const EditItem = (todo: ITodoItem) => {
     navigate("/edit", {
       state: todo,
     });
+  };
+
+  const handleTodoSelected: (
+    event: ChangeEvent<HTMLInputElement>,
+    todo: ITodoItem
+  ) => void = (event, todo) => {
+    todo.done = event.target.checked;
+    updateAnyTodoSelected();
   };
 
   return (
@@ -54,7 +68,9 @@ export function TodoItem({
         key={todoItem.id}
         type="checkbox"
         className="checkbox"
-        onChange={(event) => (todoItem.done = event.target.checked)}
+        // onChange={(event) => (todoItem.done = event.target.checked)}
+        onChange={(event) => handleTodoSelected(event, todoItem)}
+        // onChange={handleTodoSelected}
       ></input>
 
       <textarea
