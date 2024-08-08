@@ -51,6 +51,10 @@ export function TodoItem({
   ) => void = (event, todo) => {
     todo.done = event.target.checked;
     updateAnyTodoSelected();
+    // event.stopPropagation();
+    event.stopPropagation();
+    // event.nativeEvent.stopImmediatePropagation();
+    console.log("SELECTED");
   };
 
   return (
@@ -71,10 +75,8 @@ export function TodoItem({
         key={todoItem.id}
         type="checkbox"
         className="checkbox"
-        // onChange={(event) => (todoItem.done = event.target.checked)}
-        onChange={(event) => handleTodoSelected(event, todoItem)}
+        onClick={(event) => handleTodoSelected(event, todoItem)}
         defaultChecked={todoItem.done}
-        // onChange={handleTodoSelected}
       ></input>
 
       <textarea
