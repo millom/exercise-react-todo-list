@@ -70,6 +70,7 @@ export function TodoItem({
         className="checkbox"
         // onChange={(event) => (todoItem.done = event.target.checked)}
         onChange={(event) => handleTodoSelected(event, todoItem)}
+        defaultChecked={todoItem.done}
         // onChange={handleTodoSelected}
       ></input>
 
