@@ -101,7 +101,7 @@ export function TodoItem({
           {todoItem.username}:
         </span>
 
-        <span title={todoItem.timestamp.toLocaleDateString()}>
+        <span className="timestamp" title={todoItem.timestamp.toLocaleDateString()}>
           {todoItem.timestamp.toLocaleDateString()}
         </span>
       </div>
