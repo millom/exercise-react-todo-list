@@ -3,6 +3,7 @@
   border: 0.2rem solid yellowgreen;
   box-shadow: 0.2rem 0.2rem rgba(50, 50, 50, 0.3);
 
+  /* width: 80%; */
   display: flex;
   justify-content: center;
   align-content: center;
@@ -12,14 +13,20 @@
 }
 
 .readonly-textarea {
-  width: 50rem;
+  width: 100%;
   height: 2.5rem;
+  background-color: rgb(250, 245, 235);
   border: none;
+  outline: none;
+  border-radius: 1rem;
+  padding: 0.6rem;
+  font-size: 1.5rem;
   /* selc */
 }
 
 .readonly-textarea::focus {
   border: none;
+  outline: none;
   /* selc */
 }
 
@@ -32,19 +39,30 @@
   font-weight: bold;
 }
 
-.not-selectable {
+/* .not-selectable {
   -webkit-touch-callout: none;
   -webkit-user-select: none;
   -khtml-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-}
+} */
 
 .checkbox {
-  height: 1.2rem;
-  width: 1.2rem;
+  height: 3rem;
+  width: 3rem;
 }
+
+input[type="checkbox" i] {
+  height: 3rem;
+  width: 3rem;
+  margin: 0;
+  padding: 0;
+}
+/* .checkbox {
+  height: 3rem;
+  width: 3rem;
+} */
 
 .sm-btn {
   height: 2rem;
@@ -58,8 +76,13 @@
 }
 
 .selected {
-  background-color: aliceblue;
-  border: none;
+  background-color: rgb(125, 183, 233);
+  /* border: none; */
+}
+
+.selected textarea {
+  background-color: rgb(140, 198, 248);
+  /* border: none; */
 }
 
 .dotted-border {
