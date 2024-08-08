@@ -31,4 +31,5 @@ export interface ITodosContext {
     movement: number
   ) => void;
   updateAnyTodoSelected: () => void;
+  username: string;
 }

@@ -1,28 +1,28 @@
 import { ReactElement, RefObject, useRef } from "react";
-import { ITodoItem, IUsername } from "../interfaces";
+import { ITodoItem } from "../interfaces";
 import { useTodosContext } from "../hooks";
 
 export function AddTodoPage(): ReactElement {
-  const { addTodoFunc } = useTodosContext();
+  const { addTodoFunc, username } = useTodosContext();
   const textAreaRef: RefObject<HTMLTextAreaElement> = useRef(null);
-  const usernameRef: RefObject<HTMLSelectElement> = useRef(null);
+  // const usernameRef: RefObject<HTMLSelectElement> = useRef(null);
 
   const addTodoListLocal = () => {
     const todoItem: ITodoItem = {
       id: -1,
       text: textAreaRef.current!.value,
       done: false,
-      username: usernameRef.current!.value,
+      username: username, //usernameRef.current!.value,
       timestamp: new Date(),
     };
     addTodoFunc(todoItem);
   };
 
-  const userNames: Array<IUsername> = [
-    { id: 0, name: "MFL" },
-    { id: 1, name: "RFL" },
-    { id: 2, name: "JFL" },
-  ];
+  // const userNames: Array<IUsername> = [
+  //   { id: 0, name: "MFL" },
+  //   { id: 1, name: "RFL" },
+  //   { id: 2, name: "JFL" },
+  // ];
 
   return (
     <>
@@ -35,7 +35,7 @@ export function AddTodoPage(): ReactElement {
 
             <textarea className="textarea" ref={textAreaRef}></textarea>
 
-            <div>
+            {/* <div>
               <label htmlFor="headerSelectId">User:</label>
               <select
                 id="headerSelectId"
@@ -49,7 +49,7 @@ export function AddTodoPage(): ReactElement {
                   </option>
                 ))}
               </select>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>

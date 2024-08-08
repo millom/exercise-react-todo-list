@@ -1,17 +1,31 @@
-import { ReactElement, DragEvent, MouseEvent, useState } from "react";
+import {
+  ReactElement,
+  DragEvent,
+  MouseEvent,
+  ChangeEvent,
+  useState,
+} from "react";
 import { Outlet, useNavigate } from "react-router-dom";
 import { Header } from ".";
-import { ITodoItem, ITodosContext } from "../interfaces";
+import { ITodoItem, ITodosContext, IUsername } from "../interfaces";
 import { addFunc, removeFunc } from "../customTypes";
 import { SortType } from "../enums";
 
 export function App(): ReactElement {
+  const users: Array<IUsername> = [
+    { id: 0, name: "MFL" },
+    { id: 1, name: "RFL" },
+    { id: 2, name: "JFL" },
+  ];
+  // const defaultUsername: string = users[0].name;
+
   const defaultTodoArray: Array<ITodoItem> = [];
   const [todoArray, setTodoArray] = useState(defaultTodoArray);
   const [id, setId] = useState(0);
-  const [sortType, setSortType] = useState(SortType.Custom);
+  // const [sortType, setSortType] = useState(SortType.Custom);
   const [selectedIdx, setSelectedIdx] = useState(0);
   const [anyTodoSelected, setAnyTodoSelected] = useState(false);
+  const [username, setUsername] = useState(users[0].name);
 
   const navigate = useNavigate();
 
@@ -67,6 +81,13 @@ export function App(): ReactElement {
     // // console.log(newTodoArray);
 
     setTodoArray([...newTodoArray]);
+  };
+
+  const updateUserFunc: (event: ChangeEvent<HTMLSelectElement>) => void = (
+    event
+  ) => {
+    setUsername(event.target.value);
+    console.log(username, users[0]);
   };
 
   const updateSelectedIdx = (idx: number) => {
@@ -149,6 +170,7 @@ export function App(): ReactElement {
     MoveItem,
 
     updateAnyTodoSelected,
+    username,
   };
 
   return (
@@ -156,9 +178,12 @@ export function App(): ReactElement {
       <Header
         removeTodoFunc={removeTodoFunc}
         sortListFunc={sortListFunc}
-        sortType={sortType}
-        updateSortType={updateSortType}
+        // sortType={sortType}
+        // updateSortType={updateSortType}
         showRemoveButton={anyTodoSelected}
+        users={users}
+        updateUserFunc={updateUserFunc}
+        username={username}
       />
 
       <Outlet context={todosContext} />

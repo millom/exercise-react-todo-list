@@ -1,18 +1,29 @@
-import { ReactElement } from "react";
+import { ReactElement, RefObject, useRef, ChangeEvent } from "react";
 import { Link } from "react-router-dom";
 import { SortType } from "../enums";
+import { IUsername } from "../interfaces";
 
 interface IHeaderProps {
   removeTodoFunc: () => void;
   sortListFunc: (type: SortType) => void;
   showRemoveButton: boolean;
+  // updateUser: (user: IUsername) => void;
+  updateUserFunc: (event: ChangeEvent<HTMLSelectElement>) => void;
+  users: Array<IUsername>;
+  username: string;
+  // userName: string;
 }
 
 export function Header({
   removeTodoFunc,
   sortListFunc,
   showRemoveButton,
+  updateUserFunc,
+  users,
+  username,
 }: IHeaderProps): ReactElement {
+  const usernameRef: RefObject<HTMLSelectElement> = useRef(null);
+
   return (
     <div className="header-container">
       <div className="header-header-navbar-container">
@@ -90,9 +101,30 @@ export function Header({
             <label htmlFor="author">Author</label>
           </div> */}
         </div>
+
         {/* <button className="sm-btn" onClick={() => sortListFunc(sortType)}>
           Sort
         </button> */}
+      </div>
+      <div className="header-sort-container">
+        <label htmlFor="headerSelectId">User:</label>
+        <select
+          id="headerSelectId"
+          className=""
+          defaultValue={0}
+          onChange={(event) => updateUserFunc(event)}
+          ref={usernameRef}
+        >
+          {users.map((user: IUsername) => (
+            <option
+              key={user.id}
+              value={user.name}
+              selected={user.name === username ? true : undefined}
+            >
+              {user.name}
+            </option>
+          ))}
+        </select>
       </div>
 
       {/* <button
