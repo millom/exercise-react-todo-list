@@ -7,6 +7,7 @@ export function AboutPage(): ReactElement {
   return (
     <div>
       <div>About</div>
+
       <div>Total number of todos: {todoArray.length}</div>
     </div>
   );

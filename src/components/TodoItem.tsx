@@ -29,8 +29,8 @@ export function TodoItem({
   MoveItem,
 }: Readonly<ITodoItemProps>): ReactElement {
   const navigate = useNavigate();
+
   const EditItem = (todo: ITodoItem) => {
-    // navigate("EditPage", { todo: ITodoItem }); // options: { todo: ITodoItem });
     navigate("/edit", {
       state: todo,
     });
@@ -71,19 +71,12 @@ export function TodoItem({
         <span className="username" title={todoItem.username}>
           {todoItem.username}:
         </span>
+
         <span title={todoItem.timestamp.toLocaleDateString()}>
           {todoItem.timestamp.toLocaleDateString()}
         </span>
-        {/* <span
-          data-tooltip="Custom tooltip text."
-          data-tooltip-position="bottom"
-        >
-          {todoItem.timestamp}
-        </span> */}
       </div>
 
-      {/* <div className={todoItem.id === selectedIdx ? "disabled" : ""}> */}
-      {/* <div className=""> */}
       <button className="sm-btn" onClick={() => RemoveItem(todoItem.id)}>
         Remove
       </button>
@@ -91,7 +84,6 @@ export function TodoItem({
       <button className="sm-btn" onClick={() => EditItem(todoItem)}>
         Edit
       </button>
-      {/* </div> */}
 
       <div
         className={

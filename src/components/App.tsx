@@ -1,6 +1,6 @@
 import { ReactElement, DragEvent, MouseEvent, useState } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
-import { Header, TodoItem } from ".";
+import { Header } from ".";
 import { ITodoItem, ITodosContext } from "../interfaces";
 import { addFunc, removeFunc } from "../customTypes";
 import { SortType } from "../enums";
@@ -21,7 +21,7 @@ export function App(): ReactElement {
     updateSelectedIdx(id);
     sortListFunc(SortType.Timestamp);
     setId(id + 1);
-    console.log(todoArray);
+    // console.log(todoArray);
     navigate("/");
   };
 
@@ -29,15 +29,8 @@ export function App(): ReactElement {
     const newTodoArray = todoArray.filter((item) => !item.done);
 
     setTodoArray(newTodoArray);
-    console.log(newTodoArray);
+    // console.log(newTodoArray);
   };
-
-  // Not used for edit
-  // const editTodoFunc = (todo: ITodoItem) => {
-  //   // const newTodoArray = todoArray.filter((item) => item.id !== id);
-
-  //   setTodoArray([...todoArray]);
-  // };
 
   const removeSelectedTodoFunc = (id: number) => {
     const newTodoArray = todoArray.filter((item) => item.id !== id);
@@ -50,23 +43,9 @@ export function App(): ReactElement {
   };
 
   const sortListFunc = (sortType: SortType) => {
-    console.log(sortType);
-    switch (sortType) {
-      case SortType.Custom:
-        break;
-      case SortType.Timestamp:
-        console.log("Timestamp");
-        break;
-      case SortType.Author:
-        console.log("Author");
-        break;
-      default:
-        console.log("Error");
-    }
-
-    // const newTodoArray = todoArray.sort((item) => item.id !== id);
     if (sortType === SortType.Custom) return;
-    console.log(todoArray);
+
+    // console.log(todoArray);
     const newTodoArray =
       sortType === SortType.Timestamp
         ? todoArray.sort((a: ITodoItem, b: ITodoItem) =>
@@ -75,9 +54,15 @@ export function App(): ReactElement {
         : todoArray.sort((a: ITodoItem, b: ITodoItem) =>
             a.username < b.username ? -1 : 1
           );
-    console.log(newTodoArray);
+    // console.log(newTodoArray);
 
-    // setTodoArray(newTodoArray);
+    // // console.log(todoArray);
+    // let newTodoArray =
+    //   sortType === SortType.Timestamp
+    //     ? todoArray.sort((a, b) => (a.timestamp < b.timestamp ? 1 : -1))
+    //     : todoArray.sort((a, b) => (a.username < b.username ? -1 : 1));
+    // // console.log(newTodoArray);
+
     setTodoArray([...newTodoArray]);
   };
 
@@ -142,7 +127,6 @@ export function App(): ReactElement {
   const todosContext: ITodosContext = {
     todoArray,
     addTodoFunc,
-    // editTodoFunc,
     removeTodoFunc,
     removeSelectedTodoFunc,
     selectedIdx,
@@ -154,7 +138,6 @@ export function App(): ReactElement {
   };
 
   return (
-    // <div className="todo-main-container">
     <>
       <Header
         removeTodoFunc={removeTodoFunc}
@@ -162,12 +145,8 @@ export function App(): ReactElement {
         sortType={sortType}
         updateSortType={updateSortType}
       />
+
       <Outlet context={todosContext} />
-      {/* <TodoMainMenu addTodo={addTotdoFunc} removeTodo={removeTodoFunc} />
-      <TodoList
-        todoArray={todoArray}
-        RemoveItem={removeSelectedTodoFunc}
-      ></TodoList> */}
     </>
   );
 }

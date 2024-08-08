@@ -1,18 +1,7 @@
 import { ReactElement } from "react";
 import { TodoItem } from "../components";
-// import { ITodoItem } from "../interfaces";
-// import { removeByIdFunc } from "../customTypes";
 import { useTodosContext } from "../hooks";
 
-// interface ITodoListProps {
-//   todoArray: Array<ITodoItem>;
-//   RemoveItem: removeByIdFunc;
-// }
-
-// export function ListTodosPage({
-//   todoArray,
-//   RemoveItem,
-// }: ITodoListProps): ReactElement {
 export function ListTodosPage(): ReactElement {
   const {
     todoArray,

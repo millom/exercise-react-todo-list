@@ -1,19 +1,9 @@
 import { ReactElement, RefObject, useRef } from "react";
-// import { addFunc, removeFunc } from "../customTypes";
 import { ITodoItem, IUsername } from "../interfaces";
 import { useTodosContext } from "../hooks";
 
-// interface ITodoMainMenuProps {
-//   addTodo: addFunc;
-//   removeTodo: removeFunc;
-// }
-
-// export function AddTodoPage({
-//   addTodo,
-//   removeTodo,
-// }: ITodoMainMenuProps): ReactElement {
 export function AddTodoPage(): ReactElement {
-  const { addTodoFunc, removeTodoFunc } = useTodosContext();
+  const { addTodoFunc } = useTodosContext();
   const textAreaRef: RefObject<HTMLTextAreaElement> = useRef(null);
   const usernameRef: RefObject<HTMLSelectElement> = useRef(null);
 
@@ -24,7 +14,6 @@ export function AddTodoPage(): ReactElement {
       done: false,
       username: usernameRef.current!.value,
       timestamp: new Date(),
-      // timestamp: new Date().toLocaleString("sv-SW"),
     };
     addTodoFunc(todoItem);
   };
@@ -43,7 +32,9 @@ export function AddTodoPage(): ReactElement {
             <button className="btn" onClick={addTodoListLocal}>
               Add
             </button>
+
             <textarea className="textarea" ref={textAreaRef}></textarea>
+
             <div>
               <label htmlFor="headerSelectId">User:</label>
               <select
@@ -60,9 +51,6 @@ export function AddTodoPage(): ReactElement {
               </select>
             </div>
           </div>
-          {/* <button className="btn" onClick={removeTodoFunc}>
-            Remove (done)
-          </button> */}
         </div>
       </div>
     </>
