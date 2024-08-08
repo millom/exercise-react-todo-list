@@ -5,7 +5,6 @@ import { useTodosContext } from "../hooks";
 export function AddTodoPage(): ReactElement {
   const { addTodoFunc, username } = useTodosContext();
   const textAreaRef: RefObject<HTMLTextAreaElement> = useRef(null);
-  // const usernameRef: RefObject<HTMLSelectElement> = useRef(null);
 
   const addTodoListLocal = () => {
     const todoItem: ITodoItem = {
@@ -18,12 +17,6 @@ export function AddTodoPage(): ReactElement {
     addTodoFunc(todoItem);
   };
 
-  // const userNames: Array<IUsername> = [
-  //   { id: 0, name: "MFL" },
-  //   { id: 1, name: "RFL" },
-  //   { id: 2, name: "JFL" },
-  // ];
-
   return (
     <>
       <div className="main-menu-container">
@@ -34,22 +27,6 @@ export function AddTodoPage(): ReactElement {
             </button>
 
             <textarea className="textarea" ref={textAreaRef}></textarea>
-
-            {/* <div>
-              <label htmlFor="headerSelectId">User:</label>
-              <select
-                id="headerSelectId"
-                className=""
-                defaultValue={0}
-                ref={usernameRef}
-              >
-                {userNames.map((user: IUsername) => (
-                  <option key={user.id} value={user.name}>
-                    {user.name}
-                  </option>
-                ))}
-              </select>
-            </div> */}
           </div>
         </div>
       </div>

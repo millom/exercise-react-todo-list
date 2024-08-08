@@ -1,4 +1,4 @@
-import { ReactElement, ChangeEvent, DragEvent, MouseEvent } from "react";
+import { ReactElement, DragEvent, MouseEvent } from "react";
 import { useNavigate } from "react-router-dom";
 import { ITodoItem } from "../interfaces";
 import { removeByIdFunc } from "../customTypes";
@@ -8,7 +8,6 @@ interface ITodoItemProps {
   RemoveItem: removeByIdFunc;
   selectedIdx: number;
   updateSelectedIdx: (idx: number) => void;
-
   handleDragStart: (event: DragEvent<HTMLDivElement>) => void;
   enableDropping: (event: DragEvent<HTMLDivElement>) => void;
   handleDrop: (event: DragEvent<HTMLDivElement>, id: number) => void;
@@ -17,7 +16,6 @@ interface ITodoItemProps {
     todoToMove: ITodoItem,
     movement: number
   ) => void;
-
   updateAnyTodoSelected: () => void;
 }
 
@@ -32,7 +30,6 @@ export function TodoItem({
   MoveItem,
   updateAnyTodoSelected,
 }: Readonly<ITodoItemProps>): ReactElement {
-  // }: ITodoItemProps): ReactElement {
   const navigate = useNavigate();
 
   const EditItem: (
@@ -51,7 +48,6 @@ export function TodoItem({
   ) => void = (event, todo) => {
     todo.done = event.target.checked;
     updateAnyTodoSelected();
-    // event.stopPropagation();
 
     event.stopPropagation();
     // event.preventDefault();
@@ -82,7 +78,6 @@ export function TodoItem({
         type="checkbox"
         className="checkbox"
         onClick={(event) => handleTodoSelected(event, todoItem)}
-        // onClick={(event) => event.preventDefault()}
         defaultChecked={todoItem.done}
       ></input>
 
@@ -101,7 +96,10 @@ export function TodoItem({
           {todoItem.username}:
         </span>
 
-        <span className="timestamp" title={todoItem.timestamp.toLocaleDateString()}>
+        <span
+          className="timestamp"
+          title={todoItem.timestamp.toLocaleDateString()}
+        >
           {todoItem.timestamp.toLocaleDateString()}
         </span>
       </div>

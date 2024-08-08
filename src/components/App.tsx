@@ -17,12 +17,10 @@ export function App(): ReactElement {
     { id: 1, name: "RFL" },
     { id: 2, name: "JFL" },
   ];
-  // const defaultUsername: string = users[0].name;
 
   const defaultTodoArray: Array<ITodoItem> = [];
   const [todoArray, setTodoArray] = useState(defaultTodoArray);
   const [id, setId] = useState(0);
-  // const [sortType, setSortType] = useState(SortType.Custom);
   const [selectedIdx, setSelectedIdx] = useState(0);
   const [anyTodoSelected, setAnyTodoSelected] = useState(false);
   const [username, setUsername] = useState(users[0].name);
@@ -55,9 +53,9 @@ export function App(): ReactElement {
     updateAnyTodoSelected(newTodoArray);
   };
 
-  const updateSortType = (type: SortType) => {
-    setSortType(type);
-  };
+  // const updateSortType = (type: SortType) => {
+  //   setSortType(type);
+  // };
 
   const sortListFunc = (sortType: SortType) => {
     if (sortType === SortType.Custom) return;
@@ -72,13 +70,6 @@ export function App(): ReactElement {
             a.username < b.username ? -1 : 1
           );
     // console.log(newTodoArray);
-
-    // // console.log(todoArray);
-    // let newTodoArray =
-    //   sortType === SortType.Timestamp
-    //     ? todoArray.sort((a, b) => (a.timestamp < b.timestamp ? 1 : -1))
-    //     : todoArray.sort((a, b) => (a.username < b.username ? -1 : 1));
-    // // console.log(newTodoArray);
 
     setTodoArray([...newTodoArray]);
   };
@@ -120,7 +111,6 @@ export function App(): ReactElement {
     todoArray.splice(targetId, 0, todo);
     setTodoArray([...todoArray]);
     console.log(todoArray);
-    // indexOf((todo: ITodoItem) => todo.id === dragedId);
   };
 
   const MoveItem = (
@@ -163,12 +153,10 @@ export function App(): ReactElement {
     removeSelectedTodoFunc,
     selectedIdx,
     updateSelectedIdx,
-
     handleDragStart,
     enableDropping,
     handleDrop,
     MoveItem,
-
     updateAnyTodoSelected,
     username,
   };
@@ -178,8 +166,6 @@ export function App(): ReactElement {
       <Header
         removeTodoFunc={removeTodoFunc}
         sortListFunc={sortListFunc}
-        // sortType={sortType}
-        // updateSortType={updateSortType}
         showRemoveButton={anyTodoSelected}
         users={users}
         updateUserFunc={updateUserFunc}

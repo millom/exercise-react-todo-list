@@ -7,11 +7,9 @@ interface IHeaderProps {
   removeTodoFunc: () => void;
   sortListFunc: (type: SortType) => void;
   showRemoveButton: boolean;
-  // updateUser: (user: IUsername) => void;
   updateUserFunc: (event: ChangeEvent<HTMLSelectElement>) => void;
   users: Array<IUsername>;
   username: string;
-  // userName: string;
 }
 
 export function Header({
@@ -33,7 +31,6 @@ export function Header({
           <button
             className={showRemoveButton ? "btn" : "btn hidden"}
             type="button"
-            // disabled={showRemoveButton ? undefined : true}
             onClick={removeTodoFunc}
           >
             Remove selected
@@ -68,43 +65,7 @@ export function Header({
           >
             Author
           </button>
-          {/* <div className="header-sort-checkbox-container">
-            <input
-              id="custom"
-              type="radio"
-              name="sort-type"
-              defaultChecked={sortType === SortType.Custom}
-              onChange={() => updateSortType(SortType.Custom)}
-            />
-            <label htmlFor="custom">Custom</label>
-          </div>
-
-          <div className="header-sort-checkbox-container">
-            <input
-              id="timestamp"
-              type="radio"
-              name="sort-type"
-              defaultChecked={sortType === SortType.Timestamp}
-              onChange={() => updateSortType(SortType.Timestamp)}
-            />
-            <label htmlFor="timestamp">Timestamp</label>
-          </div>
-
-          <div className="header-sort-checkbox-container">
-            <input
-              id="author"
-              type="radio"
-              name="sort-type"
-              defaultChecked={sortType === SortType.Author}
-              onChange={() => updateSortType(SortType.Author)}
-            />
-            <label htmlFor="author">Author</label>
-          </div> */}
         </div>
-
-        {/* <button className="sm-btn" onClick={() => sortListFunc(sortType)}>
-          Sort
-        </button> */}
       </div>
       <div className="header-sort-container">
         <label htmlFor="headerSelectId">User:</label>
@@ -126,15 +87,6 @@ export function Header({
           ))}
         </select>
       </div>
-
-      {/* <button
-        className={showRemoveButton ? "btn" : "btn hidden"}
-        type="button"
-        // disabled={showRemoveButton ? undefined : true}
-        onClick={removeTodoFunc}
-      >
-        Remove selected
-      </button> */}
     </div>
   );
 }

@@ -8,12 +8,10 @@ export function ListTodosPage(): ReactElement {
     removeSelectedTodoFunc,
     selectedIdx,
     updateSelectedIdx,
-
     handleDragStart,
     enableDropping,
     handleDrop,
     MoveItem,
-
     updateAnyTodoSelected,
   } = useTodosContext();
 

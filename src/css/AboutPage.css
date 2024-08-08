@@ -7,11 +7,6 @@
   margin: 1rem;
 }
 
-/* article {
-  margin-block: 0.5rem;
-  margin-inline: 2rem;
-} */
-
 h1,
 h3,
 p,
@@ -20,8 +15,3 @@ ul {
   margin-block: 0.5rem;
   margin-inline: 2rem;
 }
-/* 
-ul {
-  margin-block: 0.2rem;
-  margin-inline: 2rem;
-} */

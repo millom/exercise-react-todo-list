@@ -3,7 +3,6 @@
   border: 0.2rem solid yellowgreen;
   box-shadow: 0.2rem 0.2rem rgba(50, 50, 50, 0.3);
 
-  /* width: 80%; */
   display: flex;
   justify-content: center;
   align-content: center;
@@ -21,13 +20,11 @@
   border-radius: 1rem;
   padding: 0.6rem;
   font-size: 1.5rem;
-  /* selc */
 }
 
 .readonly-textarea::focus {
   border: none;
   outline: none;
-  /* selc */
 }
 
 .username-timestamp {
@@ -38,20 +35,6 @@
 .username {
   font-weight: bold;
 }
-
-.timestamp {
-  /* width: 4rem;
-  font-weight: bold; */
-}
-
-/* .not-selectable {
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  -khtml-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-} */
 
 .checkbox {
   height: 3rem;
@@ -64,10 +47,6 @@ input[type="checkbox" i] {
   margin: 0;
   padding: 0;
 }
-/* .checkbox {
-  height: 3rem;
-  width: 3rem;
-} */
 
 .sm-btn {
   height: 2rem;
@@ -82,12 +61,10 @@ input[type="checkbox" i] {
 
 .selected {
   background-color: rgb(125, 183, 233);
-  /* border: none; */
 }
 
 .selected textarea {
   background-color: rgb(140, 198, 248);
-  /* border: none; */
 }
 
 .dotted-border {
