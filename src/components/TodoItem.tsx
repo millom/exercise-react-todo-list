@@ -46,13 +46,19 @@ export function TodoItem({
   };
 
   const handleTodoSelected: (
-    event: ChangeEvent<HTMLInputElement>,
+    event: any, //ChangeEvent<HTMLInputElement>,
     todo: ITodoItem
   ) => void = (event, todo) => {
     todo.done = event.target.checked;
     updateAnyTodoSelected();
     // event.stopPropagation();
+
     event.stopPropagation();
+    // event.preventDefault();
+    // event.preventDefault();
+    // event.stopPropagation();
+    // event.nativeEvent.stopImmediatePropagation();
+    // event.nativeEvent.stopPropagation();
     // event.nativeEvent.stopImmediatePropagation();
     console.log("SELECTED");
   };
@@ -76,6 +82,7 @@ export function TodoItem({
         type="checkbox"
         className="checkbox"
         onClick={(event) => handleTodoSelected(event, todoItem)}
+        // onClick={(event) => event.preventDefault()}
         defaultChecked={todoItem.done}
       ></input>
 
