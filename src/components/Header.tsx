@@ -18,50 +18,59 @@ export function Header({
   showRemoveButton,
 }: IHeaderProps): ReactElement {
   return (
-    <div className="header">
-      <div className="">My todo list</div>
+    <div className="header-container">
+      <div className="header-header-navbar-container">
+        <h1 className="header-text">My todo list</h1>
 
-      <div className="navbar">
-        <Link to="/" className="link">
-          Home
-        </Link>
-        <Link to="/add-todo" className="link">
-          Add todo
-        </Link>
-        <Link to="/about" className="link">
-          About
-        </Link>
+        <div className="header-navbar">
+          <Link to="/" className="link">
+            Home
+          </Link>
+          <Link to="/add-todo" className="link">
+            Add todo
+          </Link>
+          <Link to="/about" className="link">
+            About
+          </Link>
+        </div>
       </div>
-      <div>
-        <h3>Sort order</h3>
 
-        <label htmlFor="custom">Custom</label>
-        <input
-          id="custom"
-          type="radio"
-          name="sort-type"
-          defaultChecked={sortType === SortType.Custom}
-          onChange={() => updateSortType(SortType.Custom)}
-        />
+      <div className="header-sort-container">
+        <h3 className="header-sort-text">Sort order</h3>
+        <div className="header-sort-checkbox-container">
+          <div className="header-sort-checkbox-container">
+            <input
+              id="custom"
+              type="radio"
+              name="sort-type"
+              defaultChecked={sortType === SortType.Custom}
+              onChange={() => updateSortType(SortType.Custom)}
+            />
+            <label htmlFor="custom">Custom</label>
+          </div>
 
-        <label htmlFor="timestamp">Timestamp</label>
-        <input
-          id="timestamp"
-          type="radio"
-          name="sort-type"
-          defaultChecked={sortType === SortType.Timestamp}
-          onChange={() => updateSortType(SortType.Timestamp)}
-        />
+          <div className="header-sort-checkbox-container">
+            <input
+              id="timestamp"
+              type="radio"
+              name="sort-type"
+              defaultChecked={sortType === SortType.Timestamp}
+              onChange={() => updateSortType(SortType.Timestamp)}
+            />
+            <label htmlFor="timestamp">Timestamp</label>
+          </div>
 
-        <label htmlFor="author">Author</label>
-        <input
-          id="author"
-          type="radio"
-          name="sort-type"
-          defaultChecked={sortType === SortType.Author}
-          onChange={() => updateSortType(SortType.Author)}
-        />
-
+          <div className="header-sort-checkbox-container">
+            <input
+              id="author"
+              type="radio"
+              name="sort-type"
+              defaultChecked={sortType === SortType.Author}
+              onChange={() => updateSortType(SortType.Author)}
+            />
+            <label htmlFor="author">Author</label>
+          </div>
+        </div>
         <button className="sm-btn" onClick={() => sortListFunc(sortType)}>
           Sort
         </button>

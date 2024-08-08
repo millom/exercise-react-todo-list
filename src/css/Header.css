@@ -1,3 +1,64 @@
+.header-container {
+  display: flex;
+  justify-content: center;
+  padding: 1rem;
+  gap: 5%;
+  /* font-size: 3rem; */
+}
+
+.header-header-navbar-container {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+}
+
+.header-navbar {
+  display: flex;
+  justify-content: center;
+}
+
+.header-navbar {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.link {
+  text-decoration: none;
+  font-size: 1.5rem;
+  background-color: cornflowerblue;
+  padding: 0.5rem;
+  border-radius: 1rem;
+}
+
+.header-text {
+  font-size: 5rem;
+  margin-block: 0.4rem;
+}
+
+.header-sort-container {
+  height: 100%;
+  padding: 0.5rem;
+  border: 0.2rem solid;
+  border-radius: 1rem;
+  border-radius: 0.5rem;
+  border: 0.2rem solid yellowgreen;
+  box-shadow: 0.2rem 0.2rem rgba(50, 50, 50, 0.3);
+}
+
+.header-sort-checkbox-container {
+  padding-block: 0.4rem;
+}
+
+.header-sort-text {
+  margin-block: 0.4rem;
+}
+
+.header-sort {
+  display: flex;
+  flex-direction: column;
+}
+
 .hidden {
   display: none;
 }
