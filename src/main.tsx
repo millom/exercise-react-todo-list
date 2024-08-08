@@ -4,6 +4,7 @@ import { RouterProvider } from "react-router-dom";
 import { router } from "./router";
 // import { App } from "./components";
 
+import "./css/AboutPage.css";
 import "./css/index.css";
 import "./css/Header.css";
 import "./css/TodoItem.css";

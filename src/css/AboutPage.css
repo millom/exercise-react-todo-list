@@ -1,0 +1,27 @@
+.about-container {
+  height: 35rem;
+  padding: 0.5rem;
+  border-radius: 1rem;
+  border: 0.2rem solid yellowgreen;
+  box-shadow: 0.2rem 0.2rem rgba(50, 50, 50, 0.3);
+  margin: 1rem;
+}
+
+/* article {
+  margin-block: 0.5rem;
+  margin-inline: 2rem;
+} */
+
+h1,
+h3,
+p,
+article,
+ul {
+  margin-block: 0.5rem;
+  margin-inline: 2rem;
+}
+/* 
+ul {
+  margin-block: 0.2rem;
+  margin-inline: 2rem;
+} */
