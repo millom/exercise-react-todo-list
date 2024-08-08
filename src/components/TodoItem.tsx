@@ -30,16 +30,19 @@ export function TodoItem({
   enableDropping,
   handleDrop,
   MoveItem,
-
   updateAnyTodoSelected,
 }: Readonly<ITodoItemProps>): ReactElement {
   // }: ITodoItemProps): ReactElement {
   const navigate = useNavigate();
 
-  const EditItem = (todo: ITodoItem) => {
+  const EditItem: (
+    event: MouseEvent<HTMLButtonElement>,
+    todo: ITodoItem
+  ) => void = (event, todo: ITodoItem) => {
     navigate("/edit", {
       state: todo,
     });
+    event.stopPropagation();
   };
 
   const handleTodoSelected: (
@@ -98,7 +101,7 @@ export function TodoItem({
         Remove
       </button>
 
-      <button className="sm-btn" onClick={() => EditItem(todoItem)}>
+      <button className="sm-btn" onClick={(event) => EditItem(event, todoItem)}>
         Edit
       </button>
 
