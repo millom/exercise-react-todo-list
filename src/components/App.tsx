@@ -30,13 +30,15 @@ export function App(): ReactElement {
     const newTodoArray = todoArray.filter((item) => !item.done);
 
     setTodoArray(newTodoArray);
-    console.log(newTodoArray);
+    updateAnyTodoSelected(newTodoArray);
+    console.log("removeTodo", newTodoArray);
   };
 
   const removeSelectedTodoFunc = (id: number) => {
     const newTodoArray = todoArray.filter((item) => item.id !== id);
 
     setTodoArray(newTodoArray);
+    updateAnyTodoSelected(newTodoArray);
   };
 
   const updateSortType = (type: SortType) => {
@@ -125,9 +127,12 @@ export function App(): ReactElement {
     event.stopPropagation();
   };
 
-  const updateAnyTodoSelected: () => void = () => {
-    const anySelected: boolean = todoArray.some((todo) => todo.done);
+  const updateAnyTodoSelected: (localTodoArray?: Array<ITodoItem>) => void = (
+    localTodoArray = todoArray
+  ) => {
+    const anySelected: boolean = localTodoArray.some((todo) => todo.done);
     setAnyTodoSelected(anySelected);
+    console.log("updateAnyTodoSelected:", localTodoArray, anyTodoSelected);
   };
 
   const todosContext: ITodosContext = {
