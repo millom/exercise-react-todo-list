@@ -6,3 +6,15 @@ body {
   height: 100vh;
   width: auto;
 }
+
+button {
+  cursor: pointer;
+}
+
+input {
+  cursor: pointer;
+}
+
+select {
+  cursor: pointer;
+}
