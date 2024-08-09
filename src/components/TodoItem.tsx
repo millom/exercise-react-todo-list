@@ -1,11 +1,10 @@
 import { ReactElement, DragEvent, MouseEvent } from "react";
 import { useNavigate } from "react-router-dom";
 import { ITodoItem } from "../interfaces";
-import { removeByIdFunc } from "../customTypes";
 
 interface ITodoItemProps {
   todoItem: ITodoItem;
-  RemoveItem: removeByIdFunc;
+  RemoveItem: (id: number) => void;
   selectedIdx: number;
   updateSelectedIdx: (idx: number) => void;
   handleDragStart: (event: DragEvent<HTMLDivElement>) => void;

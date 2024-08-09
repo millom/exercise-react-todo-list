@@ -8,7 +8,6 @@ import {
 import { Outlet, useNavigate } from "react-router-dom";
 import { Header } from ".";
 import { ITodoItem, ITodosContext, IUsername } from "../interfaces";
-import { addFunc, removeFunc } from "../customTypes";
 import { SortType } from "../enums";
 
 export function App(): ReactElement {
@@ -27,7 +26,7 @@ export function App(): ReactElement {
 
   const navigate = useNavigate();
 
-  const addTodoFunc: addFunc = (todoItem: ITodoItem) => {
+  const addTodoFunc: (todoItem: ITodoItem) => void = (todoItem: ITodoItem) => {
     todoItem.id = id;
     todoArray.push(todoItem);
     setTodoArray(todoArray);
@@ -38,7 +37,7 @@ export function App(): ReactElement {
     navigate("/");
   };
 
-  const removeTodoFunc: removeFunc = () => {
+  const removeTodoFunc: () => void = () => {
     const newTodoArray = todoArray.filter((item) => !item.done);
 
     setTodoArray(newTodoArray);
