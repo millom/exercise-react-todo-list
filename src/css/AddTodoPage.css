@@ -7,7 +7,7 @@
 .main-menu-layout {
   display: flex;
   justify-content: space-around;
-  width: 80%;
+  width: 56rem;
 }
 
 #headerSelectId {
@@ -37,8 +37,8 @@
 }
 
 .textarea {
-  width: 28rem;
-  height: 3.3rem;
+  width: 48rem;
+  height: 8rem;
   font-size: large;
   line-height: 1.5;
   border-radius: 1rem;

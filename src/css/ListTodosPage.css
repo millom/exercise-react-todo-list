@@ -1,13 +1,13 @@
 .todo-list-container {
   display: block;
-  max-height: 35rem;
+  height: 35rem;
   display: flex;
   justify-content: center;
 }
 
 .todo-list {
-  height: 29rem;
-  min-width: 42rem;
+  height: 100%;
+  width: 56rem;
   border-radius: 1rem;
   border: 0.2rem solid yellowgreen;
   box-shadow: 0.2rem 0.2rem rgba(50, 50, 50, 0.3);
