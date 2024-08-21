@@ -17,6 +17,7 @@ export function App(): ReactElement {
     { id: 2, name: "JFL" },
   ];
 
+  const baseUrl: string = "https://localhost:7070/";
   const defaultTodoArray: Array<ITodoItem> = [];
   const [todoArray, setTodoArray] = useState(defaultTodoArray);
   const [id, setId] = useState(0);
@@ -158,6 +159,7 @@ export function App(): ReactElement {
     MoveItem,
     updateAnyTodoSelected,
     username,
+    baseUrl,
   };
 
   return (

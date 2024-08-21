@@ -32,4 +32,5 @@ export interface ITodosContext {
   ) => void;
   updateAnyTodoSelected: () => void;
   username: string;
+  baseUrl: string;
 }
