@@ -4,11 +4,22 @@ import {
   MouseEvent,
   ChangeEvent,
   useState,
+  useEffect,
 } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
 import { Header } from ".";
-import { ITodoItem, ITodosContext, IUsername } from "../interfaces";
+import {
+  IFetchTodoItem,
+  ITodoItem,
+  ITodosContext,
+  IUsername,
+} from "../interfaces";
 import { SortType } from "../enums";
+import {
+  fetchGetAll,
+  getJSonDataUsingFetch,
+  simpleJsonToCocktails,
+} from "../fetchFunctions";
 
 export function App(): ReactElement {
   const users: Array<IUsername> = [
@@ -161,6 +172,36 @@ export function App(): ReactElement {
     username,
     baseUrl,
   };
+
+  useEffect(() => {
+    // const data = fetchGetAll();
+    // console.log("Effect;", data);
+    const setCocktailById = async () => {
+      const url: string = baseUrl + "api/todos";
+      console.log(url);
+      const jsonTodos: IFetchTodoItem[] = await getJSonDataUsingFetch(url);
+      console.log(jsonTodos);
+      const todos: ITodoItem[] = simpleJsonToCocktails(jsonTodos);
+      console.log("tre:", todos);
+      setTodoArray(todos);
+      // setCocktail(
+      //   jsonDrinks === null
+      //     ? undefined
+      //     : // : jsonToCocktails(jsonDrinks, nonAlkoholic)[0]
+      //       jsonToCocktails(jsonDrinks, false)[0]
+      //   // jsonToCocktails(jsonDrinks, false)[0]
+      // );
+      // console.log(
+      //   "CocktailDetailsPage Effect:",
+      //   url,
+      //   jsonDrinks,
+      //   cocktail,
+      //   nonAlkoholic
+      // );
+    };
+
+    setCocktailById();
+  }, []);
 
   return (
     <>
