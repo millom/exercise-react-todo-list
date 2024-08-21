@@ -10,6 +10,7 @@ import { Outlet, useNavigate } from "react-router-dom";
 import { Header } from ".";
 import {
   IFetchTodoItem,
+  IFetchTodoItemSend,
   ITodoItem,
   ITodosContext,
   IUsername,
@@ -18,6 +19,8 @@ import { SortType } from "../enums";
 import {
   fetchGetAll,
   getJSonDataUsingFetch,
+  postJSonDataUsingFetch,
+  simpleCocktailToJson,
   simpleJsonToCocktails,
 } from "../fetchFunctions";
 
@@ -39,14 +42,21 @@ export function App(): ReactElement {
   const navigate = useNavigate();
 
   const addTodoFunc: (todoItem: ITodoItem) => void = (todoItem: ITodoItem) => {
-    todoItem.id = id;
-    todoArray.push(todoItem);
-    setTodoArray(todoArray);
-    updateSelectedIdx(id);
-    sortListFunc(SortType.Timestamp);
-    setId(id + 1);
-    console.log(todoArray);
-    navigate("/");
+    // todoItem.id = id;
+
+    const url: string = baseUrl + "api/todos";
+    console.log("addTodoFunc", url, todoItem);
+    const json: IFetchTodoItemSend = simpleCocktailToJson(todoItem);
+    console.log("addTodoFunc2", url, json);
+    postJSonDataUsingFetch(url, json);
+
+    // todoArray.push(todoItem);
+    // setTodoArray(todoArray);
+    // updateSelectedIdx(id);
+    // sortListFunc(SortType.Timestamp);
+    // setId(id + 1);
+    // console.log(todoArray);
+    // navigate("/");
   };
 
   const removeTodoFunc: () => void = () => {
