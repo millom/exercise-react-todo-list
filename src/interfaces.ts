@@ -5,6 +5,7 @@ export interface ITodoItem {
   text: string;
   done: boolean;
   timestamp: Date;
+  // epoch: string;
   username: string;
 }
 
@@ -53,6 +54,15 @@ export interface IFetchTodoItem {
   title: string;
   isCompleted: boolean;
   timestamp: string;
-  epoch: string;
+  // epoch: string;
+  author: string;
+}
+
+export interface IFetchTodoItemSend {
+  id: number;
+  title: string;
+  isCompleted: boolean;
+  timestamp: string;
+  // epoch: string;
   author: string;
 }

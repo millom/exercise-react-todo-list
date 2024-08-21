@@ -1,4 +1,9 @@
-import { IFetchAddTodoItem, IFetchTodoItem, ITodoItem } from "./interfaces";
+import {
+  IFetchAddTodoItem,
+  IFetchTodoItem,
+  IFetchTodoItemSend,
+  ITodoItem,
+} from "./interfaces";
 
 // export const getJSonDataUsingFetch = async () => {
 //   const searchUrl = baseUrl + "api/todos";
@@ -20,10 +25,33 @@ import { IFetchAddTodoItem, IFetchTodoItem, ITodoItem } from "./interfaces";
 export const getJSonDataUsingFetch: (
   searchUrl: string
 ) => Promise<IFetchTodoItem[]> | any = async (searchUrl) => {
+  console.log("getJSonDataUsingFetch", searchUrl);
   const response = await fetch(searchUrl, {
     headers: {
       mode: "cors",
     },
+    //make sure to serialize your JSON body
+    // mode: "no-cors",
+    // cache: "force-cache",
+    // contenttype:
+  });
+  return await response.json();
+};
+
+export const postJSonDataUsingFetch: (
+  searchUrl: string,
+  todoItem: IFetchTodoItemSend
+) => Promise<IFetchTodoItemSend> | any = async (searchUrl, todoItem) => {
+  console.log("postJSonDataUsingFetch", todoItem, JSON.stringify(todoItem));
+  const response = await fetch(searchUrl, {
+    method: "post",
+    headers: {
+      mode: "cors",
+      // Accept: "application/json",
+      "Content-Type": "application/json",
+    },
+    //make sure to serialize your JSON body
+    body: JSON.stringify(todoItem),
     // mode: "no-cors",
     // cache: "force-cache",
     // contenttype:
@@ -96,19 +124,41 @@ export const simpleJsonToCocktails: (todos: IFetchTodoItem[]) => ITodoItem[] = (
 ) => {
   return todos.map((json: IFetchTodoItem) => {
     // console.log("json", json, json.timestamp, ":::", new Date());
-    const unixEpochTimeMS = parseInt(json.epoch) * 1000;
+    const unixEpochTimeMS = parseInt(json.timestamp) * 1000;
     const todo: ITodoItem = {
       id: json.id,
       username: json.author,
       text: json.title,
       done: json.isCompleted,
+      // timestamp: new Date(unixEpochTimeMS), // From .NET time to JS time
       timestamp: new Date(unixEpochTimeMS), // From .NET time to JS time
       // timestamp: Date(json.epoch)
     };
-    console.log(json.epoch);
+    // console.log(json.epoch);
     console.log("todo", todo);
     return todo;
   });
+};
+
+export const simpleCocktailToJson: (todo: ITodoItem) => IFetchTodoItemSend = (
+  todo
+) => {
+  // return //todos.map((todo: ITodoItem) => {
+  // console.log("json", json, json.timestamp, ":::", new Date());
+  // const unixEpochTimeMS = parseInt(json.epoch) * 1000;
+  const json: IFetchTodoItemSend = {
+    id: todo.id,
+    author: todo.username,
+    title: todo.text,
+    isCompleted: todo.done,
+    timestamp: new Date().toString(), // From .NET time to JS time
+    // epoch: "1111111",
+    // timestamp: Date(json.epoch)
+  };
+  // console.log(json.epoch);
+  // console.log("todo", todo);
+  return json;
+  // });
 };
 //   }
 // }
