@@ -79,8 +79,8 @@ export function Header({
           {users.map((user: IUsername) => (
             <option
               key={user.id}
-              value={user.name}
-              selected={user.name === username ? true : undefined}
+              defaultValue={user.name}
+              defaultChecked={user.name === username ? true : undefined}
             >
               {user.name}
             </option>
