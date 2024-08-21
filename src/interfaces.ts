@@ -34,3 +34,25 @@ export interface ITodosContext {
   username: string;
   baseUrl: string;
 }
+
+export interface IFetchAddTodoItem {
+  Title: string;
+  Author: string;
+}
+
+// export interface IFetchPutTodoItem {
+//   Id: number;
+//   Title: string;
+//   IsCompleted: boolean;
+//   Timestamp: Date;
+//   Author: string;
+// }
+
+export interface IFetchTodoItem {
+  id: number;
+  title: string;
+  isCompleted: boolean;
+  timestamp: string;
+  epoch: string;
+  author: string;
+}
