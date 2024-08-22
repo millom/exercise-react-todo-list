@@ -7,7 +7,7 @@ import {
 
 export const getJSonDataUsingFetch: (
   searchUrl: string
-) => Promise<IFetchTodoItem[]> | any = async (searchUrl) => {
+) => Promise<IFetchTodoItem[]> = async (searchUrl) => {
   console.log("getJSonDataUsingFetch", searchUrl);
   const response = await fetch(searchUrl, {
     headers: {
@@ -20,7 +20,7 @@ export const getJSonDataUsingFetch: (
 export const postJSonDataUsingFetch: (
   searchUrl: string,
   todoItem: IFetchTodoItemSend
-) => Promise<IFetchTodoItem> | any = async (searchUrl, todoItem) => {
+) => Promise<IFetchTodoItem> = async (searchUrl, todoItem) => {
   console.log("postJSonDataUsingFetch", todoItem, JSON.stringify(todoItem));
   const response = await fetch(searchUrl, {
     method: "post",
@@ -61,9 +61,8 @@ export const putJSonDataUsingFetch: (
 };
 
 export const deleteJSonDataUsingFetch: (
-  searchUrl: string,
-  id: number
-) => Promise<IFetchTodoItem> | any = async (searchUrl, id) => {
+  searchUrl: string
+) => Promise<Response> = async (searchUrl) => {
   const response = await fetch(searchUrl, {
     method: "delete",
     headers: {
@@ -71,12 +70,12 @@ export const deleteJSonDataUsingFetch: (
     },
   });
   console.log("deleteJSonDataUsingFetch:", response);
-  return await response;
+  return response;
 };
 
-export const fetchUpdateTodo: (todo: ITodoItem) => void = (todo) => {};
+// export const fetchUpdateTodo: (todo: ITodoItem) => void = (todo) => {};
 
-export const fetchRemoveTodo: (todo: ITodoItem) => void = (todo) => {};
+// export const fetchRemoveTodo: (todo: ITodoItem) => void = (todo) => {};
 
 export const simpleJsonToCocktail: (json: IFetchTodoItem) => ITodoItem = (
   json

@@ -1,16 +1,15 @@
 import { ReactElement, RefObject, useRef } from "react";
 import { ITodoItemPostDto } from "../interfaces";
 import { useTodosContext } from "../hooks";
-// import { fetchAddTodo, postJSonDataUsingFetch } from "../fetchFunctions";
 
 export function AddTodoPage(): ReactElement {
-  const { addTodoFunc, username, baseUrl } = useTodosContext();
+  const { addTodoFunc, username } = useTodosContext();
   const textAreaRef: RefObject<HTMLTextAreaElement> = useRef(null);
 
   const addTodoListLocal = () => {
     const todoItem: ITodoItemPostDto = {
       text: textAreaRef.current!.value,
-      username: username, //usernameRef.current!.value,
+      username: username,
     };
     addTodoFunc(todoItem);
   };

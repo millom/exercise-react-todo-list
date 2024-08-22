@@ -1,5 +1,5 @@
 .todo-list-container {
-  display: block;
+  /* display: block; */
   height: 31rem;
   display: flex;
   justify-content: center;

@@ -19,7 +19,7 @@ export function Header({
   updateUserFunc,
   users,
   username,
-}: IHeaderProps): ReactElement {
+}: Readonly<IHeaderProps>): ReactElement {
   const usernameRef: RefObject<HTMLSelectElement> = useRef(null);
 
   return (

@@ -48,7 +48,7 @@ export function App(): ReactElement {
   const addTodoFunc: (todoItem: ITodoItemPostDto) => void = (
     todoItem: ITodoItemPostDto
   ) => {
-    const addTodoLocal: (todoItem: ITodoItemPostDto) => void = async (
+    const addTodoLocal: (todoItem: ITodoItemPostDto) => Promise<void> = async (
       todoItem: ITodoItemPostDto
     ) => {
       const url: string = baseUrl + "api/todos";
@@ -73,7 +73,7 @@ export function App(): ReactElement {
   const updateTodoFunc: (todoItem: ITodoItem) => void = (
     todoItem: ITodoItem
   ) => {
-    const updateTodoLocal: (todoItem: ITodoItem) => void = async (
+    const updateTodoLocal: (todoItem: ITodoItem) => Promise<void> = async (
       todoItem: ITodoItem
     ) => {
       const url: string = baseUrl + `api/todos/${todoItem.id}`;

@@ -23,7 +23,7 @@
   font-size: 1.5rem;
 }
 
-.readonly-textarea::focus {
+.readonly-textarea:focus {
   border: none;
   outline: none;
 }
@@ -51,7 +51,7 @@ input[type="checkbox" i] {
 
 .sm-btn {
   height: 2rem;
-  width: 5rem;
+  width: 5.5rem;
   background-color: khaki;
   color: chocolate;
   font-weight: bold;
