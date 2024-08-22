@@ -138,6 +138,11 @@ export function App(): ReactElement {
   };
 
   const removeTodoFunc: () => void = () => {
+    todoArray.forEach((item) => {
+      if (item.done) {
+        deleteTodoFromDb(item.id);
+      }
+    });
     const newTodoArray = todoArray.filter((item) => !item.done);
 
     setTodoArray(newTodoArray);
