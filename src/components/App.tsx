@@ -12,6 +12,7 @@ import {
   IFetchTodoItem,
   IFetchTodoItemSend,
   ITodoItem,
+  ITodoItemPostDto,
   ITodosContext,
   IUsername,
 } from "../interfaces";
@@ -21,6 +22,7 @@ import {
   getJSonDataUsingFetch,
   postJSonDataUsingFetch,
   simpleCocktailToJson,
+  simpleJsonToCocktail,
   simpleJsonToCocktails,
 } from "../fetchFunctions";
 
@@ -41,22 +43,35 @@ export function App(): ReactElement {
 
   const navigate = useNavigate();
 
-  const addTodoFunc: (todoItem: ITodoItem) => void = (todoItem: ITodoItem) => {
-    // todoItem.id = id;
+  const addTodoFunc: (todoItem: ITodoItemPostDto) => void = (
+    todoItem: ITodoItemPostDto
+  ) => {
+    const addTodoLocal: (todoItem: ITodoItemPostDto) => void = async (
+      todoItem: ITodoItemPostDto
+    ) => {
+      // todoItem.id = id;
 
-    const url: string = baseUrl + "api/todos";
-    console.log("addTodoFunc", url, todoItem);
-    const json: IFetchTodoItemSend = simpleCocktailToJson(todoItem);
-    console.log("addTodoFunc2", url, json);
-    postJSonDataUsingFetch(url, json);
+      const url: string = baseUrl + "api/todos";
+      console.log("addTodoFunc", url, todoItem);
+      const json: IFetchTodoItemSend = simpleCocktailToJson(todoItem);
+      console.log("addTodoFunc2", url, json);
+      const newTodoPromise: Promise<IFetchTodoItem> =
+        await postJSonDataUsingFetch(url, json);
+      const newTodo: ITodoItem = simpleJsonToCocktail(await newTodoPromise);
 
-    // todoArray.push(todoItem);
-    // setTodoArray(todoArray);
-    // updateSelectedIdx(id);
-    // sortListFunc(SortType.Timestamp);
-    // setId(id + 1);
-    // console.log(todoArray);
-    // navigate("/");
+      // todoArray.push(todoItem);
+      setTodoArray([newTodo, ...todoArray]);
+      console.log("addTodoFunc:", newTodo, todoArray);
+
+      // setTodoArray(todoArray);
+      updateSelectedIdx(newTodo.id);
+      // sortListFunc(SortType.Timestamp);
+      // setId(id + 1);
+      console.log(todoArray);
+      navigate("/");
+    };
+
+    addTodoLocal(todoItem);
   };
 
   const removeTodoFunc: () => void = () => {

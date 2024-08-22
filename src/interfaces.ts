@@ -9,6 +9,15 @@ export interface ITodoItem {
   username: string;
 }
 
+export interface ITodoItemPostDto {
+  // id: number;
+  text: string;
+  // done: boolean;
+  // timestamp: Date;
+  // epoch: string;
+  username: string;
+}
+
 export interface IUsername {
   id: number;
   name: string;
@@ -17,7 +26,7 @@ export interface IUsername {
 export interface ITodosContext {
   todoArray: Array<ITodoItem>;
   // todoItem?: ITodoItem;
-  addTodoFunc: (todo: ITodoItem) => void;
+  addTodoFunc: (todo: ITodoItemPostDto) => void;
   // editTodoFunc: (todo: ITodoItem) => void; // Not used fpor edit
   removeTodoFunc: () => void;
   removeSelectedTodoFunc: (id: number) => void;
@@ -59,9 +68,9 @@ export interface IFetchTodoItem {
 }
 
 export interface IFetchTodoItemSend {
-  id: number;
+  // id: number;
   title: string;
-  isCompleted: boolean;
+  // isCompleted: boolean;
   timestamp: string;
   // epoch: string;
   author: string;

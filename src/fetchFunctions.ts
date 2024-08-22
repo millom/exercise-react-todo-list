@@ -3,6 +3,7 @@ import {
   IFetchTodoItem,
   IFetchTodoItemSend,
   ITodoItem,
+  ITodoItemPostDto,
 } from "./interfaces";
 
 // export const getJSonDataUsingFetch = async () => {
@@ -41,7 +42,7 @@ export const getJSonDataUsingFetch: (
 export const postJSonDataUsingFetch: (
   searchUrl: string,
   todoItem: IFetchTodoItemSend
-) => Promise<IFetchTodoItemSend> | any = async (searchUrl, todoItem) => {
+) => Promise<IFetchTodoItem> | any = async (searchUrl, todoItem) => {
   console.log("postJSonDataUsingFetch", todoItem, JSON.stringify(todoItem));
   const response = await fetch(searchUrl, {
     method: "post",
@@ -119,6 +120,25 @@ export const fetchUpdateTodo: (todo: ITodoItem) => void = (todo) => {};
 
 export const fetchRemoveTodo: (todo: ITodoItem) => void = (todo) => {};
 
+export const simpleJsonToCocktail: (json: IFetchTodoItem) => ITodoItem = (
+  json
+) => {
+  const unixEpochTimeMS = parseInt(json.timestamp) * 1000;
+  const todo: ITodoItem = {
+    // console.log("json", json, json.timestamp, ":::", new Date());
+    id: json.id,
+    username: json.author,
+    text: json.title,
+    done: json.isCompleted,
+    // timestamp: new Date(unixEpochTimeMS), // From .NET time to JS time
+    timestamp: new Date(unixEpochTimeMS), // From .NET time to JS time
+    // timestamp: Date(json.epoch)
+  };
+  // // console.log(json.epoch);
+  // console.log("todo", todo);
+  return todo;
+};
+
 export const simpleJsonToCocktails: (todos: IFetchTodoItem[]) => ITodoItem[] = (
   todos
 ) => {
@@ -140,17 +160,17 @@ export const simpleJsonToCocktails: (todos: IFetchTodoItem[]) => ITodoItem[] = (
   });
 };
 
-export const simpleCocktailToJson: (todo: ITodoItem) => IFetchTodoItemSend = (
-  todo
-) => {
+export const simpleCocktailToJson: (
+  todo: ITodoItemPostDto
+) => IFetchTodoItemSend = (todo) => {
   // return //todos.map((todo: ITodoItem) => {
   // console.log("json", json, json.timestamp, ":::", new Date());
   // const unixEpochTimeMS = parseInt(json.epoch) * 1000;
   const json: IFetchTodoItemSend = {
-    id: todo.id,
+    // id: todo.id,
     author: todo.username,
     title: todo.text,
-    isCompleted: todo.done,
+    // isCompleted: todo.done,
     timestamp: new Date().toString(), // From .NET time to JS time
     // epoch: "1111111",
     // timestamp: Date(json.epoch)
