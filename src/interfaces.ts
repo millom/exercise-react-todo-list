@@ -5,7 +5,7 @@ export interface ITodoItem {
   text: string;
   done: boolean;
   timestamp: Date;
-  // epoch: string;
+  epoch: string;
   username: string;
 }
 
@@ -19,7 +19,7 @@ export interface ITodoItemPostDto {
 }
 
 export interface ITodoItemPutDto {
-  // id: number;
+  id: number;
   text: string;
   done: boolean;
   // timestamp: Date;
@@ -52,6 +52,7 @@ export interface ITodosContext {
   updateAnyTodoSelected: () => void;
   username: string;
   baseUrl: string;
+  updateTodoFunc: (todoItem: ITodoItem) => void;
 }
 
 export interface IFetchAddTodoItem {
@@ -86,7 +87,7 @@ export interface IFetchTodoItemSend {
 }
 
 export interface IFetchTodoItemPut {
-  // id: number;
+  id: number;
   title: string;
   isCompleted: boolean;
   // timestamp: string;

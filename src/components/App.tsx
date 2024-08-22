@@ -18,9 +18,11 @@ import {
 } from "../interfaces";
 import { SortType } from "../enums";
 import {
+  cocktailToJson,
   fetchGetAll,
   getJSonDataUsingFetch,
   postJSonDataUsingFetch,
+  putJSonDataUsingFetch,
   simpleCocktailToJson,
   simpleJsonToCocktail,
   simpleJsonToCocktails,
@@ -72,6 +74,36 @@ export function App(): ReactElement {
     };
 
     addTodoLocal(todoItem);
+  };
+
+  const updateTodoFunc: (todoItem: ITodoItem) => void = (
+    todoItem: ITodoItem
+  ) => {
+    const updateTodoLocal: (todoItem: ITodoItem) => void = async (
+      todoItem: ITodoItem
+    ) => {
+      // todoItem.id = id;
+      const url: string = baseUrl + `api/todos/${todoItem.id}`;
+      console.log("updateTodoFunc", url, todoItem);
+      const json: IFetchTodoItem = cocktailToJson(todoItem);
+      console.log("updateTodoFunc2", url, json);
+      const newTodoPromise: Promise<IFetchTodoItem> =
+        await putJSonDataUsingFetch(url, json);
+      const newTodo: ITodoItem = simpleJsonToCocktail(await newTodoPromise);
+
+      // todoArray.push(todoItem);
+      setTodoArray([...todoArray]);
+      console.log("updateTodoFunc:", newTodo, todoArray);
+
+      // setTodoArray(todoArray);
+      // updateSelectedIdx(newTodo.id);
+      // sortListFunc(SortType.Timestamp);
+      // setId(id + 1);
+      console.log(todoArray);
+      // navigate("/");
+    };
+
+    updateTodoLocal(todoItem);
   };
 
   const removeTodoFunc: () => void = () => {
@@ -196,6 +228,7 @@ export function App(): ReactElement {
     updateAnyTodoSelected,
     username,
     baseUrl,
+    updateTodoFunc,
   };
 
   useEffect(() => {

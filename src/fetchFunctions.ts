@@ -60,6 +60,28 @@ export const postJSonDataUsingFetch: (
   return await response.json();
 };
 
+export const putJSonDataUsingFetch: (
+  searchUrl: string,
+  todoItem: IFetchTodoItem
+) => Promise<IFetchTodoItem> | any = async (searchUrl, todoItem) => {
+  console.log("postJSonDataUsingFetch", todoItem, JSON.stringify(todoItem));
+  const response = await fetch(searchUrl, {
+    method: "put",
+    headers: {
+      mode: "cors",
+      // Accept: "application/json",
+      "Content-Type": "application/json",
+    },
+    //make sure to serialize your JSON body
+    body: JSON.stringify(todoItem),
+    // mode: "no-cors",
+    // cache: "force-cache",
+    // contenttype:
+  });
+  console.log("putJSonDataUsingFetch:", response);
+  return await response.json();
+};
+
 export const fetchGetAll: () => void = () => {
   const getAllTodos = async () => {
     try {
@@ -150,6 +172,7 @@ export const simpleJsonToCocktails: (todos: IFetchTodoItem[]) => ITodoItem[] = (
       username: json.author,
       text: json.title,
       done: json.isCompleted,
+      epoch: json.timestamp,
       // timestamp: new Date(unixEpochTimeMS), // From .NET time to JS time
       timestamp: new Date(unixEpochTimeMS), // From .NET time to JS time
       // timestamp: Date(json.epoch)
@@ -158,6 +181,25 @@ export const simpleJsonToCocktails: (todos: IFetchTodoItem[]) => ITodoItem[] = (
     console.log("todo", todo);
     return todo;
   });
+};
+
+export const cocktailToJson: (todo: ITodoItem) => IFetchTodoItem = (todo) => {
+  // return //todos.map((todo: ITodoItem) => {
+  // console.log("json", json, json.timestamp, ":::", new Date());
+  // const unixEpochTimeMS = parseInt(json.epoch) * 1000;
+  const json: IFetchTodoItem = {
+    id: todo.id,
+    author: todo.username,
+    title: todo.text,
+    isCompleted: todo.done,
+    // timestamp: new Date().toString(), // From .NET time to JS time
+    // epoch: "1111111",
+    timestamp: todo.timestamp,
+  };
+  // console.log(json.epoch);
+  // console.log("todo", todo);
+  return json;
+  // });
 };
 
 export const simpleCocktailToJson: (
