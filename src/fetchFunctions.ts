@@ -64,7 +64,7 @@ export const putJSonDataUsingFetch: (
   searchUrl: string,
   todoItem: IFetchTodoItem
 ) => Promise<IFetchTodoItem> | any = async (searchUrl, todoItem) => {
-  console.log("postJSonDataUsingFetch", todoItem, JSON.stringify(todoItem));
+  console.log("putJSonDataUsingFetch", todoItem, JSON.stringify(todoItem));
   const response = await fetch(searchUrl, {
     method: "put",
     headers: {
@@ -176,6 +176,7 @@ export const simpleJsonToCocktail: (json: IFetchTodoItem) => ITodoItem = (
     done: json.isCompleted,
     // timestamp: new Date(unixEpochTimeMS), // From .NET time to JS time
     timestamp: new Date(unixEpochTimeMS), // From .NET time to JS time
+    epoch: json.timestamp,
     // timestamp: Date(json.epoch)
   };
   // // console.log(json.epoch);
@@ -216,7 +217,7 @@ export const cocktailToJson: (todo: ITodoItem) => IFetchTodoItem = (todo) => {
     isCompleted: todo.done,
     // timestamp: new Date().toString(), // From .NET time to JS time
     // epoch: "1111111",
-    timestamp: todo.timestamp,
+    timestamp: todo.epoch,
   };
   // console.log(json.epoch);
   // console.log("todo", todo);
