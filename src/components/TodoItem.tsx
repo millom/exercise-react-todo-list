@@ -51,6 +51,7 @@ export function TodoItem({
     todo.done = event.target.checked;
     updateTodoFunc(todo);
 
+    updateAnyTodoSelected();
     // event.preventDefault();
     // event.preventDefault();
     // event.stopPropagation();
