@@ -171,7 +171,7 @@ export const simpleCocktailToJson: (
     author: todo.username,
     title: todo.text,
     // isCompleted: todo.done,
-    timestamp: new Date().toString(), // From .NET time to JS time
+    // timestamp: new Date().toString(), // From .NET time to JS time
     // epoch: "1111111",
     // timestamp: Date(json.epoch)
   };

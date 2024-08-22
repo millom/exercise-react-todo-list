@@ -71,7 +71,7 @@ export interface IFetchTodoItemSend {
   // id: number;
   title: string;
   // isCompleted: boolean;
-  timestamp: string;
+  // timestamp: string;
   // epoch: string;
   author: string;
 }
