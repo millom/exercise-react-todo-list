@@ -61,12 +61,10 @@ input[type="checkbox" i] {
 }
 
 .selected {
-  /* background-color: rgb(125, 183, 233); */
   background-color: rgb(145, 203, 253);
 }
 
 .selected textarea {
-  /* background-color: rgb(140, 198, 248); */
   background-color: rgb(165, 228, 255);
 }
 

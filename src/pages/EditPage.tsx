@@ -13,28 +13,25 @@ export function EditPage(): ReactElement {
     console.log("State Before:", state);
     state.text = textAreaRef.current!.value;
     updateTodoFunc(state);
-    // console.log("state", state);
     console.log("State After:", state);
     navigate("/");
   };
 
   return (
-    <>
-      <div className="main-menu-container">
-        <div className="main-menu-layout">
-          <div className="add-container">
-            <textarea
-              className="textarea"
-              ref={textAreaRef}
-              defaultValue={state.text}
-            />
-          </div>
-
-          <button className="btn" onClick={editTodoLocal}>
-            Save
-          </button>
+    <div className="main-menu-container">
+      <div className="main-menu-layout">
+        <div className="add-container">
+          <textarea
+            className="textarea"
+            ref={textAreaRef}
+            defaultValue={state.text}
+          />
         </div>
+
+        <button className="btn" onClick={editTodoLocal}>
+          Save
+        </button>
       </div>
-    </>
+    </div>
   );
 }

@@ -52,12 +52,6 @@ export function TodoItem({
     updateTodoFunc(todo);
 
     updateAnyTodoSelected();
-    // event.preventDefault();
-    // event.preventDefault();
-    // event.stopPropagation();
-    // event.nativeEvent.stopImmediatePropagation();
-    // event.nativeEvent.stopPropagation();
-    // event.nativeEvent.stopImmediatePropagation();
     console.log("SELECTED");
   };
 

@@ -9,29 +9,23 @@ export function AddTodoPage(): ReactElement {
 
   const addTodoListLocal = () => {
     const todoItem: ITodoItemPostDto = {
-      // id: -1,
       text: textAreaRef.current!.value,
-      // done: null,
       username: username, //usernameRef.current!.value,
-      // timestamp: new Date(),
-      // epoch: new Date(1970, 0, 1, 0, 0, 0, 0).getTime().toString(),
     };
     addTodoFunc(todoItem);
   };
 
   return (
-    <>
-      <div className="main-menu-container">
-        <div className="main-menu-layout">
-          <div className="add-container">
-            <button className="btn" onClick={addTodoListLocal}>
-              Add
-            </button>
+    <div className="main-menu-container">
+      <div className="main-menu-layout">
+        <div className="add-container">
+          <button className="btn" onClick={addTodoListLocal}>
+            Add
+          </button>
 
-            <textarea className="textarea" ref={textAreaRef}></textarea>
-          </div>
+          <textarea className="textarea" ref={textAreaRef}></textarea>
         </div>
       </div>
-    </>
+    </div>
   );
 }

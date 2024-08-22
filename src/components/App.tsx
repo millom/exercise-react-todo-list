@@ -52,8 +52,6 @@ export function App(): ReactElement {
     const addTodoLocal: (todoItem: ITodoItemPostDto) => void = async (
       todoItem: ITodoItemPostDto
     ) => {
-      // todoItem.id = id;
-
       const url: string = baseUrl + "api/todos";
       console.log("addTodoFunc", url, todoItem);
       const json: IFetchTodoItemSend = simpleCocktailToJson(todoItem);
@@ -62,14 +60,10 @@ export function App(): ReactElement {
         await postJSonDataUsingFetch(url, json);
       const newTodo: ITodoItem = simpleJsonToCocktail(await newTodoPromise);
 
-      // todoArray.push(todoItem);
       setTodoArray([newTodo, ...todoArray]);
       console.log("addTodoFunc:", newTodo, todoArray);
 
-      // setTodoArray(todoArray);
       updateSelectedIdx(newTodo.id);
-      // sortListFunc(SortType.Timestamp);
-      // setId(id + 1);
       console.log(todoArray);
       navigate("/");
     };
@@ -83,7 +77,6 @@ export function App(): ReactElement {
     const updateTodoLocal: (todoItem: ITodoItem) => void = async (
       todoItem: ITodoItem
     ) => {
-      // todoItem.id = id;
       const url: string = baseUrl + `api/todos/${todoItem.id}`;
       console.log("updateTodoFunc", url, todoItem);
       const json: IFetchTodoItem = cocktailToJson(todoItem);
@@ -92,16 +85,10 @@ export function App(): ReactElement {
         await putJSonDataUsingFetch(url, json);
       const newTodo: ITodoItem = simpleJsonToCocktail(await newTodoPromise);
 
-      // todoArray.push(todoItem);
       setTodoArray([...todoArray]);
       console.log("updateTodoFunc:", newTodo, todoArray);
 
-      // setTodoArray(todoArray);
-      // updateSelectedIdx(newTodo.id);
-      // sortListFunc(SortType.Timestamp);
-      // setId(id + 1);
       console.log(todoArray);
-      // navigate("/");
     };
 
     updateTodoLocal(todoItem);
@@ -109,29 +96,13 @@ export function App(): ReactElement {
 
   const deleteTodoFromDb: (id: number) => void = (todo) => {
     const deleteTodoLocal: (id: number) => void = async (id: number) => {
-      // todoItem.id = id;
       const url: string = baseUrl + `api/todos/${id}`;
-      // console.log("updateTodoFunc", url, todoItem);
-      // const json: IFetchTodoItem = cocktailToJson(todoItem);
-      // console.log("updateTodoFunc2", url, json);
-      // const newTodoPromise: Promise<IFetchTodoItem> =
       const response: Response = await deleteJSonDataUsingFetch(url, id);
       if (!response.ok) {
-        console.log("----FAIL TO DELÖETE ITEM-----");
+        console.log("----FAIL TO DELETE ITEM-----");
         throw new Error("Fail to delete item");
       }
-      // const newTodo: ITodoItem = simpleJsonToCocktail(await newTodoPromise);
-
-      // todoArray.push(todoItem);
-      // setTodoArray([...todoArray]);
-      // console.log("updateTodoFunc:", newTodo, todoArray);
-
-      // setTodoArray(todoArray);
-      // updateSelectedIdx(newTodo.id);
-      // sortListFunc(SortType.Timestamp);
-      // setId(id + 1);
       console.log(todoArray);
-      // navigate("/");
     };
 
     deleteTodoLocal(todo);
@@ -158,14 +129,9 @@ export function App(): ReactElement {
     updateAnyTodoSelected(newTodoArray);
   };
 
-  // const updateSortType = (type: SortType) => {
-  //   setSortType(type);
-  // };
-
   const sortListFunc = (sortType: SortType) => {
     if (sortType === SortType.Custom) return;
 
-    // console.log(todoArray);
     const newTodoArray =
       sortType === SortType.Timestamp
         ? todoArray.sort((a: ITodoItem, b: ITodoItem) =>
@@ -174,7 +140,6 @@ export function App(): ReactElement {
         : todoArray.sort((a: ITodoItem, b: ITodoItem) =>
             a.username < b.username ? -1 : 1
           );
-    // console.log(newTodoArray);
 
     setTodoArray([...newTodoArray]);
   };
@@ -269,8 +234,6 @@ export function App(): ReactElement {
   };
 
   useEffect(() => {
-    // const data = fetchGetAll();
-    // console.log("Effect;", data);
     const setCocktailById = async () => {
       const url: string = baseUrl + "api/todos";
       console.log(url);
@@ -279,20 +242,6 @@ export function App(): ReactElement {
       const todos: ITodoItem[] = simpleJsonToCocktails(jsonTodos);
       console.log("tre:", todos);
       setTodoArray(todos);
-      // setCocktail(
-      //   jsonDrinks === null
-      //     ? undefined
-      //     : // : jsonToCocktails(jsonDrinks, nonAlkoholic)[0]
-      //       jsonToCocktails(jsonDrinks, false)[0]
-      //   // jsonToCocktails(jsonDrinks, false)[0]
-      // );
-      // console.log(
-      //   "CocktailDetailsPage Effect:",
-      //   url,
-      //   jsonDrinks,
-      //   cocktail,
-      //   nonAlkoholic
-      // );
     };
 
     setCocktailById();
