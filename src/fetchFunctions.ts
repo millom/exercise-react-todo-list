@@ -82,6 +82,28 @@ export const putJSonDataUsingFetch: (
   return await response.json();
 };
 
+export const deleteJSonDataUsingFetch: (
+  searchUrl: string,
+  id: number
+) => Promise<IFetchTodoItem> | any = async (searchUrl, id) => {
+  // console.log("deleteJSonDataUsingFetch", todoItem, JSON.stringify(todoItem));
+  const response = await fetch(searchUrl, {
+    method: "delete",
+    headers: {
+      mode: "cors",
+      // Accept: "application/json",
+      // "Content-Type": "application/json",
+    },
+    // //make sure to serialize your JSON body
+    // body: JSON.stringify(todoItem),
+    // // mode: "no-cors",
+    // // cache: "force-cache",
+    // // contenttype:
+  });
+  console.log("deleteJSonDataUsingFetch:", response);
+  return await response;
+};
+
 export const fetchGetAll: () => void = () => {
   const getAllTodos = async () => {
     try {

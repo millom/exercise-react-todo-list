@@ -19,6 +19,7 @@ import {
 import { SortType } from "../enums";
 import {
   cocktailToJson,
+  deleteJSonDataUsingFetch,
   fetchGetAll,
   getJSonDataUsingFetch,
   postJSonDataUsingFetch,
@@ -106,6 +107,36 @@ export function App(): ReactElement {
     updateTodoLocal(todoItem);
   };
 
+  const deleteTodoFromDb: (id: number) => void = (todo) => {
+    const deleteTodoLocal: (id: number) => void = async (id: number) => {
+      // todoItem.id = id;
+      const url: string = baseUrl + `api/todos/${id}`;
+      // console.log("updateTodoFunc", url, todoItem);
+      // const json: IFetchTodoItem = cocktailToJson(todoItem);
+      // console.log("updateTodoFunc2", url, json);
+      // const newTodoPromise: Promise<IFetchTodoItem> =
+      const response: Response = await deleteJSonDataUsingFetch(url, id);
+      if (!response.ok) {
+        console.log("----FAIL TO DELÖETE ITEM-----");
+        throw new Error("Fail to delete item");
+      }
+      // const newTodo: ITodoItem = simpleJsonToCocktail(await newTodoPromise);
+
+      // todoArray.push(todoItem);
+      // setTodoArray([...todoArray]);
+      // console.log("updateTodoFunc:", newTodo, todoArray);
+
+      // setTodoArray(todoArray);
+      // updateSelectedIdx(newTodo.id);
+      // sortListFunc(SortType.Timestamp);
+      // setId(id + 1);
+      console.log(todoArray);
+      // navigate("/");
+    };
+
+    deleteTodoLocal(todo);
+  };
+
   const removeTodoFunc: () => void = () => {
     const newTodoArray = todoArray.filter((item) => !item.done);
 
@@ -115,6 +146,7 @@ export function App(): ReactElement {
   };
 
   const removeSelectedTodoFunc = (id: number) => {
+    deleteTodoFromDb(id);
     const newTodoArray = todoArray.filter((item) => item.id !== id);
 
     setTodoArray(newTodoArray);
