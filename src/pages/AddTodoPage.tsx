@@ -1,7 +1,7 @@
 import { ReactElement, RefObject, useRef } from "react";
-import { ITodoItem, ITodoItemPostDto } from "../interfaces";
+import { ITodoItemPostDto } from "../interfaces";
 import { useTodosContext } from "../hooks";
-import { fetchAddTodo, postJSonDataUsingFetch } from "../fetchFunctions";
+// import { fetchAddTodo, postJSonDataUsingFetch } from "../fetchFunctions";
 
 export function AddTodoPage(): ReactElement {
   const { addTodoFunc, username, baseUrl } = useTodosContext();

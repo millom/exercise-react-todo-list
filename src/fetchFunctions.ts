@@ -1,5 +1,4 @@
 import {
-  IFetchAddTodoItem,
   IFetchTodoItem,
   IFetchTodoItemSend,
   ITodoItem,
@@ -73,51 +72,6 @@ export const deleteJSonDataUsingFetch: (
   });
   console.log("deleteJSonDataUsingFetch:", response);
   return await response;
-};
-
-export const fetchGetAll: () => void = () => {
-  const getAllTodos = async () => {
-    try {
-      const url = baseUrl + "api/todos";
-      console.log("url:", url);
-      const res = await fetch(url, { mode: "no-cors" });
-      console.log(res);
-      if (!res.ok) console.log(`GET ALL failed with ${res.status}.`);
-    } catch (err) {
-      console.error(err);
-    }
-  };
-
-  getAllTodos();
-};
-
-export const fetchAddTodo: (todo: ITodoItem) => void = (todo) => {
-  const addTodo = async (todo: ITodoItem) => {
-    const data: IFetchTodoItem = {
-      Id: 1,
-      Title: todo.text,
-      Author: todo.username,
-      IsCompleted: false,
-      Timestamp: Date.now().toString(),
-    };
-
-    try {
-      const url = baseUrl + "api/todos";
-      console.log("url:", url);
-      const res = await fetch(url, {
-        method: "POST",
-        headers: { accept: "text/plain", "Content-Type": "application/json" },
-        mode: "no-cors",
-        body: JSON.stringify(data),
-      });
-
-      if (!res.ok) console.log(`POST failed with ${res.status}.`);
-    } catch (err) {
-      console.error(err);
-    }
-  };
-
-  addTodo(todo);
 };
 
 export const fetchUpdateTodo: (todo: ITodoItem) => void = (todo) => {};

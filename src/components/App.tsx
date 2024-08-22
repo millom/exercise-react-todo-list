@@ -20,7 +20,6 @@ import { SortType } from "../enums";
 import {
   cocktailToJson,
   deleteJSonDataUsingFetch,
-  fetchGetAll,
   getJSonDataUsingFetch,
   postJSonDataUsingFetch,
   putJSonDataUsingFetch,
@@ -39,7 +38,7 @@ export function App(): ReactElement {
   const baseUrl: string = "https://localhost:7070/";
   const defaultTodoArray: Array<ITodoItem> = [];
   const [todoArray, setTodoArray] = useState(defaultTodoArray);
-  const [id, setId] = useState(0);
+  // const [id, setId] = useState(0);
   const [selectedIdx, setSelectedIdx] = useState(0);
   const [anyTodoSelected, setAnyTodoSelected] = useState(false);
   const [username, setUsername] = useState(users[0].name);
