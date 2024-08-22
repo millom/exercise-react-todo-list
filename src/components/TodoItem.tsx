@@ -1,6 +1,7 @@
 import { ReactElement, DragEvent, MouseEvent } from "react";
 import { useNavigate } from "react-router-dom";
 import { ITodoItem } from "../interfaces";
+import { useTodosContext } from "../hooks";
 
 interface ITodoItemProps {
   todoItem: ITodoItem;
@@ -29,26 +30,27 @@ export function TodoItem({
   MoveItem,
   updateAnyTodoSelected,
 }: Readonly<ITodoItemProps>): ReactElement {
+  const { updateTodoFunc, baseUrl } = useTodosContext();
   const navigate = useNavigate();
 
   const EditItem: (
     event: MouseEvent<HTMLButtonElement>,
     todo: ITodoItem
   ) => void = (event, todo: ITodoItem) => {
+    event.stopPropagation();
     navigate("/edit", {
       state: todo,
     });
-    event.stopPropagation();
   };
 
   const handleTodoSelected: (
     event: any, //ChangeEvent<HTMLInputElement>,
     todo: ITodoItem
   ) => void = (event, todo) => {
-    todo.done = event.target.checked;
-    updateAnyTodoSelected();
-
     event.stopPropagation();
+    todo.done = event.target.checked;
+    updateTodoFunc(todo);
+
     // event.preventDefault();
     // event.preventDefault();
     // event.stopPropagation();
