@@ -18,6 +18,15 @@ export interface ITodoItemPostDto {
   username: string;
 }
 
+export interface ITodoItemPutDto {
+  // id: number;
+  text: string;
+  done: boolean;
+  // timestamp: Date;
+  // epoch: string;
+  // username: string;
+}
+
 export interface IUsername {
   id: number;
   name: string;
@@ -74,4 +83,13 @@ export interface IFetchTodoItemSend {
   // timestamp: string;
   // epoch: string;
   author: string;
+}
+
+export interface IFetchTodoItemPut {
+  // id: number;
+  title: string;
+  isCompleted: boolean;
+  // timestamp: string;
+  // epoch: string;
+  // author: string;
 }
